@@ -13,6 +13,7 @@
 		B455DDDA2A4614CC001118A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B455DDD92A4614CC001118A8 /* ContentView.swift */; };
 		B455DDDC2A4614CF001118A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B455DDDB2A4614CF001118A8 /* Assets.xcassets */; };
 		B455DDDF2A4614CF001118A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B455DDDE2A4614CF001118A8 /* Preview Assets.xcassets */; };
+		B47044382A6AD7B1004689B7 /* input1.json in Resources */ = {isa = PBXBuildFile; fileRef = B47044372A6AD7B1004689B7 /* input1.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B455DDDB2A4614CF001118A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B455DDDE2A4614CF001118A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B455DDE02A4614CF001118A8 /* MarsLanderSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarsLanderSimulator.entitlements; sourceTree = "<group>"; };
+		B47044372A6AD7B1004689B7 /* input1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = input1.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				B455DDDB2A4614CF001118A8 /* Assets.xcassets */,
 				B455DDE02A4614CF001118A8 /* MarsLanderSimulator.entitlements */,
 				B455DDDD2A4614CF001118A8 /* Preview Content */,
+				B47044372A6AD7B1004689B7 /* input1.json */,
 			);
 			path = MarsLanderSimulator;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B47044382A6AD7B1004689B7 /* input1.json in Resources */,
 				B43DFF162A5554CF00525229 /* input1.txt in Resources */,
 				B455DDDF2A4614CF001118A8 /* Preview Assets.xcassets in Resources */,
 				B455DDDC2A4614CF001118A8 /* Assets.xcassets in Resources */,
@@ -205,7 +209,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -259,7 +263,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

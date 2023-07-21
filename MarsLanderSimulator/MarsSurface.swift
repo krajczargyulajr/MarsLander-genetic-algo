@@ -7,10 +7,33 @@
 
 import Foundation
 
-struct MarsSurface {
-    public var Points : [CGPoint]
+struct SimulationOutput : Codable {
+    public var surface : MarsSurface
+    
+    public var generations : [LanderGeneration]
 }
 
-struct LanderState {
-    public var Position : CGPoint
+struct MarsSurface : Codable {
+    public var surfacePoints : [CGPoint]
+}
+
+struct LanderGeneration : Codable {    
+    public var landers : [Lander] = [Lander]()
+}
+
+struct Lander : Codable {
+    
+    public var controlInputs : [LanderControlInput] = [LanderControlInput]()
+    
+    public var trajectory : [LanderState] = [LanderState]()
+}
+
+struct LanderState : Codable {
+    public var position : CGPoint
+}
+
+struct LanderControlInput : Codable {
+    public var rotate : Double
+    
+    public var power : Int
 }

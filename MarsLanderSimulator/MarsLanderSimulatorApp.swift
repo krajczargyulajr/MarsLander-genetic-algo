@@ -9,13 +9,17 @@ import SwiftUI
 
 @main
 struct MarsLanderSimulatorApp: App {
-    @State private var searchText = ""
+    var dataModel : [MarsSurface] = surfaces
     
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+//        WindowGroup {
+//            ContentView()
+//        }
+//        .windowStyle(.hiddenTitleBar)
+//        .windowToolbarStyle(.unified)
+//        
+        Window("MarsLander Simulator", id: "main") {
+            SimulationList(dataModel: dataModel, selectedSurfaceId: 0)
         }
-        .windowStyle(.hiddenTitleBar)
-        .windowToolbarStyle(.unified)
     }
 }

@@ -7,16 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B416034A2A7013090003E608 /* surfaces.json in Resources */ = {isa = PBXBuildFile; fileRef = B41603492A7013090003E608 /* surfaces.json */; };
+		B416034C2A70CEA20003E608 /* SimulationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034B2A70CEA20003E608 /* SimulationList.swift */; };
+		B416034E2A70CF550003E608 /* SimulationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034D2A70CF550003E608 /* SimulationDetail.swift */; };
+		B41603502A70CFD40003E608 /* SimulationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034F2A70CFD40003E608 /* SimulationCard.swift */; };
+		B41603532A70D0D80003E608 /* CanvasHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603522A70D0D80003E608 /* CanvasHelper.swift */; };
+		B41603552A70E1AD0003E608 /* SimulationDetailContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603542A70E1AD0003E608 /* SimulationDetailContent.swift */; };
+		B41603582A710C290003E608 /* GeneticSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603572A710C290003E608 /* GeneticSimulator.swift */; };
+		B416035A2A710CD20003E608 /* GeneticEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603592A710CD20003E608 /* GeneticEvaluator.swift */; };
+		B416035C2A710CF40003E608 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416035B2A710CF40003E608 /* GeneticAlgorithm.swift */; };
+		B416035E2A710D200003E608 /* PopulationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416035D2A710D200003E608 /* PopulationService.swift */; };
+		B41603602A7116E00003E608 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416035F2A7116E00003E608 /* MathHelper.swift */; };
 		B43DFF122A554FEA00525229 /* MarsSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43DFF112A554FEA00525229 /* MarsSurface.swift */; };
 		B43DFF162A5554CF00525229 /* input1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B43DFF152A5554CF00525229 /* input1.txt */; };
 		B455DDD82A4614CC001118A8 /* MarsLanderSimulatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B455DDD72A4614CC001118A8 /* MarsLanderSimulatorApp.swift */; };
 		B455DDDA2A4614CC001118A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B455DDD92A4614CC001118A8 /* ContentView.swift */; };
 		B455DDDC2A4614CF001118A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B455DDDB2A4614CF001118A8 /* Assets.xcassets */; };
 		B455DDDF2A4614CF001118A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B455DDDE2A4614CF001118A8 /* Preview Assets.xcassets */; };
-		B47044382A6AD7B1004689B7 /* input1.json in Resources */ = {isa = PBXBuildFile; fileRef = B47044372A6AD7B1004689B7 /* input1.json */; };
+		B4BCE1292A6FF5E000CAF397 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCE1282A6FF5E000CAF397 /* ModelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B41603492A7013090003E608 /* surfaces.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = surfaces.json; sourceTree = "<group>"; };
+		B416034B2A70CEA20003E608 /* SimulationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationList.swift; sourceTree = "<group>"; };
+		B416034D2A70CF550003E608 /* SimulationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetail.swift; sourceTree = "<group>"; };
+		B416034F2A70CFD40003E608 /* SimulationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCard.swift; sourceTree = "<group>"; };
+		B41603522A70D0D80003E608 /* CanvasHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasHelper.swift; sourceTree = "<group>"; };
+		B41603542A70E1AD0003E608 /* SimulationDetailContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailContent.swift; sourceTree = "<group>"; };
+		B41603572A710C290003E608 /* GeneticSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticSimulator.swift; sourceTree = "<group>"; };
+		B41603592A710CD20003E608 /* GeneticEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticEvaluator.swift; sourceTree = "<group>"; };
+		B416035B2A710CF40003E608 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
+		B416035D2A710D200003E608 /* PopulationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationService.swift; sourceTree = "<group>"; };
+		B416035F2A7116E00003E608 /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		B43DFF112A554FEA00525229 /* MarsSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsSurface.swift; sourceTree = "<group>"; };
 		B43DFF152A5554CF00525229 /* input1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input1.txt; sourceTree = "<group>"; };
 		B455DDD42A4614CC001118A8 /* MarsLanderSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsLanderSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,7 +47,7 @@
 		B455DDDB2A4614CF001118A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B455DDDE2A4614CF001118A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B455DDE02A4614CF001118A8 /* MarsLanderSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarsLanderSimulator.entitlements; sourceTree = "<group>"; };
-		B47044372A6AD7B1004689B7 /* input1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = input1.json; sourceTree = "<group>"; };
+		B4BCE1282A6FF5E000CAF397 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +61,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B41603512A70D0CA0003E608 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B41603522A70D0D80003E608 /* CanvasHelper.swift */,
+				B416035F2A7116E00003E608 /* MathHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B41603562A710C100003E608 /* GeneticSimulator */ = {
+			isa = PBXGroup;
+			children = (
+				B41603572A710C290003E608 /* GeneticSimulator.swift */,
+				B41603592A710CD20003E608 /* GeneticEvaluator.swift */,
+				B416035B2A710CF40003E608 /* GeneticAlgorithm.swift */,
+				B416035D2A710D200003E608 /* PopulationService.swift */,
+			);
+			path = GeneticSimulator;
+			sourceTree = "<group>";
+		};
 		B455DDCB2A4614CC001118A8 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +100,10 @@
 		B455DDD62A4614CC001118A8 /* MarsLanderSimulator */ = {
 			isa = PBXGroup;
 			children = (
+				B41603562A710C100003E608 /* GeneticSimulator */,
+				B41603512A70D0CA0003E608 /* Helpers */,
+				B4BCE12A2A7012B700CAF397 /* Resources */,
+				B4BCE1252A6FF50000CAF397 /* Views */,
 				B43DFF112A554FEA00525229 /* MarsSurface.swift */,
 				B455DDD72A4614CC001118A8 /* MarsLanderSimulatorApp.swift */,
 				B455DDD92A4614CC001118A8 /* ContentView.swift */,
@@ -65,7 +111,7 @@
 				B455DDDB2A4614CF001118A8 /* Assets.xcassets */,
 				B455DDE02A4614CF001118A8 /* MarsLanderSimulator.entitlements */,
 				B455DDDD2A4614CF001118A8 /* Preview Content */,
-				B47044372A6AD7B1004689B7 /* input1.json */,
+				B4BCE1282A6FF5E000CAF397 /* ModelData.swift */,
 			);
 			path = MarsLanderSimulator;
 			sourceTree = "<group>";
@@ -76,6 +122,25 @@
 				B455DDDE2A4614CF001118A8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B4BCE1252A6FF50000CAF397 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B416034B2A70CEA20003E608 /* SimulationList.swift */,
+				B416034D2A70CF550003E608 /* SimulationDetail.swift */,
+				B416034F2A70CFD40003E608 /* SimulationCard.swift */,
+				B41603542A70E1AD0003E608 /* SimulationDetailContent.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B4BCE12A2A7012B700CAF397 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B41603492A7013090003E608 /* surfaces.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +201,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B47044382A6AD7B1004689B7 /* input1.json in Resources */,
 				B43DFF162A5554CF00525229 /* input1.txt in Resources */,
 				B455DDDF2A4614CF001118A8 /* Preview Assets.xcassets in Resources */,
+				B416034A2A7013090003E608 /* surfaces.json in Resources */,
 				B455DDDC2A4614CF001118A8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,8 +216,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B43DFF122A554FEA00525229 /* MarsSurface.swift in Sources */,
+				B41603532A70D0D80003E608 /* CanvasHelper.swift in Sources */,
+				B416035A2A710CD20003E608 /* GeneticEvaluator.swift in Sources */,
+				B416035C2A710CF40003E608 /* GeneticAlgorithm.swift in Sources */,
 				B455DDDA2A4614CC001118A8 /* ContentView.swift in Sources */,
+				B41603602A7116E00003E608 /* MathHelper.swift in Sources */,
+				B416034C2A70CEA20003E608 /* SimulationList.swift in Sources */,
+				B4BCE1292A6FF5E000CAF397 /* ModelData.swift in Sources */,
+				B416035E2A710D200003E608 /* PopulationService.swift in Sources */,
+				B41603502A70CFD40003E608 /* SimulationCard.swift in Sources */,
+				B41603582A710C290003E608 /* GeneticSimulator.swift in Sources */,
 				B455DDD82A4614CC001118A8 /* MarsLanderSimulatorApp.swift in Sources */,
+				B41603552A70E1AD0003E608 /* SimulationDetailContent.swift in Sources */,
+				B416034E2A70CF550003E608 /* SimulationDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

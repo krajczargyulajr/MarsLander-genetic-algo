@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var surface : MarsSurface = MarsSurface(surfacePoints: [CGPoint]())
+    @State var surface : MarsSurface = MarsSurface(id: 0, surfacePoints: [CGPoint]())
     @State var lander : [LanderGeneration] = [LanderGeneration]()
     
     @State var currentGeneration : Int = 0
@@ -17,75 +17,79 @@ struct ContentView: View {
     
     @State var playing : Bool = false
     
+    @State var surfaceString : String = "yo"
+    
     let playTimer2 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        VStack {
-            HStack{
-                Button(action: play) {
-                    Image(systemName: "play.fill")
-                }
-                Button(action: pause) {
-                    Image(systemName: "pause.fill")
-                }
-                Text("\(String(describing: playing))")
-                Group {
-                    Button(action: goToFirst) {
-                        Image(systemName: "backward.end.fill")
+        HStack {
+            VStack {
+                HStack{
+                    Button(action: play) {
+                        Image(systemName: "play.fill")
                     }
-                    Button(action: goToPrev) {
-                        Image(systemName: "backward.frame.fill")
+                    Button(action: pause) {
+                        Image(systemName: "pause.fill")
                     }
-                    TextField("Current generation:", text: Binding(
-                        get: { String(currentGeneration) },
-                        set: { Value in currentGeneration = Int(Value) ?? 0 }
-                    )).frame(width: 60)
-                    Button(action: goToNext) {
-                        Image(systemName: "forward.frame.fill")
-                    }
-                    Button(action: goToLast) {
-                        Image(systemName: "forward.end.fill")
-                    }
-                    
-                }.disabled(lander.count == 0)
-                Spacer()
-                Button(action:loadFromFile) {
-                    Text("Render")
-                }
-            }.padding()
-            Canvas { context, size in
-                if lander.count > 0 {
-                    var surfacePath = Path()
-                    
-                    let translatedCoordinates = surface.surfacePoints.map { toCanvasCoords(canvasSize: size, point: $0) }
-                    
-                    surfacePath.addLines(translatedCoordinates)
-                    
-                    context.stroke(surfacePath, with: .color(.red), style: StrokeStyle(lineWidth: 1))
-                    
-                    let colors : [Color] = [.blue, .cyan, .green, .orange, .mint]
-                    let g = lander[currentGeneration]
-                    
-                    let landerPathTranslatedCoordinates = g.landers.map { $0.trajectory.map { toCanvasCoords(canvasSize: size, point: $0.position ) } }
-                    
-                    for p in landerPathTranslatedCoordinates {
-                        var landerPath = Path()
+                    Text("\(String(describing: playing))")
+                    Group {
+                        Button(action: goToFirst) {
+                            Image(systemName: "backward.end.fill")
+                        }
+                        Button(action: goToPrev) {
+                            Image(systemName: "backward.frame.fill")
+                        }
+                        TextField("Current generation:", text: Binding(
+                            get: { String(currentGeneration) },
+                            set: { Value in currentGeneration = Int(Value) ?? 0 }
+                        )).frame(width: 60)
+                        Button(action: goToNext) {
+                            Image(systemName: "forward.frame.fill")
+                        }
+                        Button(action: goToLast) {
+                            Image(systemName: "forward.end.fill")
+                        }
                         
-                        landerPath.addLines(p)
-                        
-                        // let opacity = Double(i) / Double(lander.count)
-                        context.stroke(landerPath, with: .color(colors[currentGeneration % colors.count]), style: StrokeStyle(lineWidth: 1))
+                    }.disabled(lander.count == 0)
+                    Spacer()
+                    Button(action:loadFromFile) {
+                        Text("Render")
                     }
-                }
-            }.onReceive(playTimer2) { time in
-                guard playing else { return }
-                
-                if currentGeneration < lander.count - 1 {
-                    currentGeneration += 1
-                }
-                
-                if currentGeneration == lander.count - 1 {
-                    playing = false
+                }.padding()
+                Canvas { context, size in
+                    if lander.count > 0 {
+                        var surfacePath = Path()
+                        
+                        let translatedCoordinates = surface.surfacePoints.map { toCanvasCoords(canvasSize: size, point: $0) }
+                        
+                        surfacePath.addLines(translatedCoordinates)
+                        
+                        context.stroke(surfacePath, with: .color(.red), style: StrokeStyle(lineWidth: 1))
+                        
+                        let colors : [Color] = [.blue, .cyan, .green, .orange, .mint]
+                        let g = lander[currentGeneration]
+                        
+                        let landerPathTranslatedCoordinates = g.landers.map { $0.trajectory.map { toCanvasCoords(canvasSize: size, point: $0.position ) } }
+                        
+                        for p in landerPathTranslatedCoordinates {
+                            var landerPath = Path()
+                            
+                            landerPath.addLines(p)
+                            
+                            // let opacity = Double(i) / Double(lander.count)
+                            context.stroke(landerPath, with: .color(colors[currentGeneration % colors.count]), style: StrokeStyle(lineWidth: 1))
+                        }
+                    }
+                }.onReceive(playTimer2) { time in
+                    guard playing else { return }
+                    
+                    if currentGeneration < lander.count - 1 {
+                        currentGeneration += 1
+                    }
+                    
+                    if currentGeneration == lander.count - 1 {
+                        playing = false
+                    }
                 }
             }
         }
@@ -119,13 +123,6 @@ struct ContentView: View {
     
     func pause() {
         playing = false
-    }
-    
-    func toCanvasCoords(canvasSize : CGSize, point: CGPoint) -> CGPoint {
-        let widthRatio = canvasSize.width / 7000
-        let heightRatio = canvasSize.height / 3000
-        
-        return CGPoint(x: point.x * widthRatio, y: canvasSize.height - point.y * heightRatio)
     }
     
     func loadFromFile() {

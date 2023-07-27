@@ -17,9 +17,33 @@ struct SimulationDetailContent: View {
     
     @State var playing : Bool = false
     
+    @State var populationSize : Int = 40
+    @State var stepCount : Int = 40
+    @State var generationsCount : Int = 40
     
     var body: some View {
         VStack {
+            HStack {
+                Button(action:runSim) {
+                    Text("Run Sim")
+                }
+                Group {
+                    Text("Population:")
+                    TextField("population-size", text: Binding(get: { String(populationSize) }, set: {Value in populationSize = Int(Value) ?? 40}))
+                        .multilineTextAlignment(.trailing)
+                        .frame(maxWidth: 50)
+                    Text("Steps:")
+                    TextField("step-count", text: Binding(get: { String(stepCount) }, set: {Value in stepCount = Int(Value) ?? 40}))
+                        .multilineTextAlignment(.trailing)
+                        .frame(maxWidth: 50)
+                    Text("Generations:")
+                    TextField("generation-count", text: Binding(get: {String(generationsCount)}, set: {Value in generationsCount = Int(Value) ?? 20}))
+                        .multilineTextAlignment(.trailing)
+                        .frame(maxWidth: 50)
+                }
+                Spacer()
+            }.padding()
+            Divider().frame(height: 1).padding(.horizontal).background(Color.gray)
             HStack {
                 Group {
                     Button(action: goToFirst) {
@@ -46,9 +70,7 @@ struct SimulationDetailContent: View {
                     )).frame(width: 60)
                 }.disabled(simulationResults.isEmpty)
                 Spacer()
-                Button(action:runSim) {
-                    Text("Run Sim")
-                }
+                
             }.padding()
             Canvas { context, size in
                 var surfacePath = Path()
@@ -60,18 +82,28 @@ struct SimulationDetailContent: View {
                 context.stroke(surfacePath, with: .color(.red), style: StrokeStyle(lineWidth: 1))
                 
                 if simulationResults.count > 0 {
-                    let colors : [Color] = [.blue, .cyan, .green, .orange, .mint]
                     let g = simulationResults[currentGeneration]
                     
-                    let landerPathTranslatedCoordinates = g.landers.map { $0.trajectory.map { toCanvasCoords(canvasSize: size, point: $0.position ) } }
-                    
-                    for p in landerPathTranslatedCoordinates {
+                    for lander in g.landers {
                         var landerPath = Path()
                         
-                        landerPath.addLines(p)
+                        landerPath.addLines(lander.trajectoryInCanvasCoordinates(canvasSize: size))
+                        
+                        // inflight: white
+                        // crashed: red
+                        // landed: green
+                        let color : Color
+                        switch lander.state {
+                        case LanderState.Crashed:
+                            color = .red
+                        case LanderState.Landed:
+                            color = .green
+                        default:
+                            color = .white
+                        }
                         
                         // let opacity = Double(i) / Double(lander.count)
-                        context.stroke(landerPath, with: .color(colors[currentGeneration % colors.count]), style: StrokeStyle(lineWidth: 1))
+                        context.stroke(landerPath, with: .color(color), style: StrokeStyle(lineWidth: 1))
                     }
                 }
             }
@@ -110,7 +142,12 @@ struct SimulationDetailContent: View {
     
     func runSim() {
         
-        simulationResults = solveWithGeneticAlgorithm(surface: surface, initialPosition: LanderPosition(position: CGPoint(x: 2500, y: 2700), velocity: CGVector(dx: 0, dy: 0), fuel: 550, rotate: 0, power: 0))
+        simulationResults = solveWithGeneticAlgorithm(
+            surface: surface,
+            initialPosition: LanderPosition(position: CGPoint(x: 2500, y: 2700), velocity: CGVector(dx: 0, dy: 0), fuel: 550, rotate: 0, power: 0),
+            stepCount: stepCount,
+            generationsCount: generationsCount
+        )
         
         return
     }

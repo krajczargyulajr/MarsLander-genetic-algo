@@ -21,32 +21,6 @@ class GeneticEvaluator {
         self.flatSegmentCenter = flatSegmentCenter
     }
 
-    func getLanderState(prev: LanderPosition, next: LanderPosition) -> LanderState {
-        if next.fuel < 0 {
-            return LanderState.OutOfFuel
-        }
-        
-        for j in surface.surfacePoints.indices.dropLast(1) {
-            let surfaceSegment1 = surface.surfacePoints[j]
-            let surfaceSegment2 = surface.surfacePoints[j + 1]
-            
-            var intersectionPoint : CGPoint = CGPoint()
-            if intersect(p1: prev.position, p2: next.position, q1: surfaceSegment1, q2: surfaceSegment2, intersectionPoint: &intersectionPoint) {
-                if j == flatSegmentIndex && prev.rotate == 0 && prev.velocity.dy <= 40 && prev.velocity.dx <= 20 {
-                    return LanderState.Landed
-                }
-                
-                return LanderState.Crashed
-            }
-        }
-        
-        if next.position.x > surface.surfacePoints.last!.x || next.position.x < surface.surfacePoints.first!.x {
-            return LanderState.Lost
-        }
-        
-        return LanderState.InFlight
-    }
-    
     func evaluateLastPositions(lander : Lander) -> Double {
         let last = lander.trajectory.last!
         

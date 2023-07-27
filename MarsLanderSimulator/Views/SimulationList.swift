@@ -10,7 +10,7 @@ import SwiftUI
 struct SimulationList: View {
     var dataModel : [MarsSurface]
     
-    @State var selectedSurfaceId : Int
+    @State var selectedSurfaceId : Int = 2
     
     var body: some View {
         NavigationSplitView {

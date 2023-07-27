@@ -12,12 +12,6 @@ struct MarsLanderSimulatorApp: App {
     var dataModel : [MarsSurface] = surfaces
     
     var body: some Scene {
-//        WindowGroup {
-//            ContentView()
-//        }
-//        .windowStyle(.hiddenTitleBar)
-//        .windowToolbarStyle(.unified)
-//        
         Window("MarsLander Simulator", id: "main") {
             SimulationList(dataModel: dataModel, selectedSurfaceId: 0)
         }

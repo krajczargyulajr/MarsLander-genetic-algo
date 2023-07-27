@@ -1,35 +1,21 @@
 //
-//  MarsSurface.swift
+//  Lander.swift
 //  MarsLanderSimulator
 //
-//  Created by Gyula Krajczar on 2023. 07. 05..
+//  Created by Gyula Krajczar on 2023. 07. 27..
 //
 
 import Foundation
 
-struct Simulation : Codable {
-    public var surface : MarsSurface
-    public var initialPosition : LanderPosition
-    public var output : SimulationOutput
-}
-
-struct SimulationOutput : Codable {
-    public var surface : MarsSurface
+class LanderGeneration : Codable {
+    public var number : Int = 0
     
-    public var generations : [LanderGeneration]
-}
-
-struct MarsSurface : Codable, Identifiable {
-    var id: Int
-    
-    public var surfacePoints : [CGPoint]
-}
-
-class LanderGeneration : Codable {    
     public var landers : [Lander] = [Lander]()
 }
 
 struct Lander : Codable {
+    
+    var id : String = UUID().uuidString
     
     public var controlInputs : [LanderControlInput] = [LanderControlInput]()
     
@@ -38,6 +24,13 @@ struct Lander : Codable {
     public var trajectoryScore : Double = 0.0
     
     public var state : LanderState = LanderState.InFlight
+    
+    func trajectoryInCanvasCoordinates(canvasSize : CGSize) -> [CGPoint] {
+        let widthRatio = canvasSize.width / 7000
+        let heightRatio = canvasSize.height / 3000
+        
+        return trajectory.map { CGPoint(x: $0.position.x * widthRatio, y: canvasSize.height - $0.position.y * heightRatio) }
+    }
 }
 
 struct LanderPosition : Codable {

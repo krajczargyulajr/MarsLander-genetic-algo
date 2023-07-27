@@ -18,7 +18,9 @@
 		B416035C2A710CF40003E608 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416035B2A710CF40003E608 /* GeneticAlgorithm.swift */; };
 		B416035E2A710D200003E608 /* PopulationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416035D2A710D200003E608 /* PopulationService.swift */; };
 		B41603602A7116E00003E608 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416035F2A7116E00003E608 /* MathHelper.swift */; };
-		B43DFF122A554FEA00525229 /* MarsSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43DFF112A554FEA00525229 /* MarsSurface.swift */; };
+		B41603632A7237040003E608 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603622A7237040003E608 /* Simulation.swift */; };
+		B41603652A7237240003E608 /* MarsSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603642A7237240003E608 /* MarsSurface.swift */; };
+		B41603672A7237430003E608 /* Lander.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603662A7237430003E608 /* Lander.swift */; };
 		B43DFF162A5554CF00525229 /* input1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B43DFF152A5554CF00525229 /* input1.txt */; };
 		B455DDD82A4614CC001118A8 /* MarsLanderSimulatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B455DDD72A4614CC001118A8 /* MarsLanderSimulatorApp.swift */; };
 		B455DDDA2A4614CC001118A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B455DDD92A4614CC001118A8 /* ContentView.swift */; };
@@ -39,7 +41,9 @@
 		B416035B2A710CF40003E608 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
 		B416035D2A710D200003E608 /* PopulationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationService.swift; sourceTree = "<group>"; };
 		B416035F2A7116E00003E608 /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
-		B43DFF112A554FEA00525229 /* MarsSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsSurface.swift; sourceTree = "<group>"; };
+		B41603622A7237040003E608 /* Simulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulation.swift; sourceTree = "<group>"; };
+		B41603642A7237240003E608 /* MarsSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsSurface.swift; sourceTree = "<group>"; };
+		B41603662A7237430003E608 /* Lander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lander.swift; sourceTree = "<group>"; };
 		B43DFF152A5554CF00525229 /* input1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input1.txt; sourceTree = "<group>"; };
 		B455DDD42A4614CC001118A8 /* MarsLanderSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsLanderSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B455DDD72A4614CC001118A8 /* MarsLanderSimulatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsLanderSimulatorApp.swift; sourceTree = "<group>"; };
@@ -81,6 +85,16 @@
 			path = GeneticSimulator;
 			sourceTree = "<group>";
 		};
+		B41603612A7236F50003E608 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B41603622A7237040003E608 /* Simulation.swift */,
+				B41603642A7237240003E608 /* MarsSurface.swift */,
+				B41603662A7237430003E608 /* Lander.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B455DDCB2A4614CC001118A8 = {
 			isa = PBXGroup;
 			children = (
@@ -100,12 +114,12 @@
 		B455DDD62A4614CC001118A8 /* MarsLanderSimulator */ = {
 			isa = PBXGroup;
 			children = (
+				B455DDD72A4614CC001118A8 /* MarsLanderSimulatorApp.swift */,
+				B41603612A7236F50003E608 /* Models */,
 				B41603562A710C100003E608 /* GeneticSimulator */,
 				B41603512A70D0CA0003E608 /* Helpers */,
 				B4BCE12A2A7012B700CAF397 /* Resources */,
 				B4BCE1252A6FF50000CAF397 /* Views */,
-				B43DFF112A554FEA00525229 /* MarsSurface.swift */,
-				B455DDD72A4614CC001118A8 /* MarsLanderSimulatorApp.swift */,
 				B455DDD92A4614CC001118A8 /* ContentView.swift */,
 				B43DFF152A5554CF00525229 /* input1.txt */,
 				B455DDDB2A4614CF001118A8 /* Assets.xcassets */,
@@ -171,7 +185,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					B455DDD32A4614CC001118A8 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -215,13 +229,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B43DFF122A554FEA00525229 /* MarsSurface.swift in Sources */,
 				B41603532A70D0D80003E608 /* CanvasHelper.swift in Sources */,
 				B416035A2A710CD20003E608 /* GeneticEvaluator.swift in Sources */,
 				B416035C2A710CF40003E608 /* GeneticAlgorithm.swift in Sources */,
+				B41603672A7237430003E608 /* Lander.swift in Sources */,
 				B455DDDA2A4614CC001118A8 /* ContentView.swift in Sources */,
 				B41603602A7116E00003E608 /* MathHelper.swift in Sources */,
 				B416034C2A70CEA20003E608 /* SimulationList.swift in Sources */,
+				B41603632A7237040003E608 /* Simulation.swift in Sources */,
+				B41603652A7237240003E608 /* MarsSurface.swift in Sources */,
 				B4BCE1292A6FF5E000CAF397 /* ModelData.swift in Sources */,
 				B416035E2A710D200003E608 /* PopulationService.swift in Sources */,
 				B41603502A70CFD40003E608 /* SimulationCard.swift in Sources */,
@@ -268,6 +284,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -328,6 +345,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -357,6 +375,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MarsLanderSimulator/Preview Content\"";
 				DEVELOPMENT_TEAM = R8CT7T9ADM;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -384,6 +403,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MarsLanderSimulator/Preview Content\"";
 				DEVELOPMENT_TEAM = R8CT7T9ADM;
 				ENABLE_HARDENED_RUNTIME = YES;

@@ -39,31 +39,3 @@ func +(lhs: CGVector, rhs: CGVector) -> CGVector {
 func +(lhs: CGPoint, rhs: CGVector) -> CGPoint {
     return CGPoint(x: lhs.x + rhs.dx, y: lhs.y + rhs.dy)
 }
-
-func intersect(p1: CGPoint, p2: CGPoint, q1: CGPoint, q2: CGPoint, intersectionPoint: inout CGPoint) -> Bool {
-    let A1 = p2.y - p1.y
-    let B1 = p1.x - p2.x
-    let C1 = A1 * p1.x + B1 * p1.y
-
-    let A2 = q2.y - q1.y
-    let B2 = q1.x - q2.x
-    let C2 = A2 * q1.x + B2 * q1.y
-
-    let determinant = A1 * B2 - A2 * B1
-    if determinant != 0 {
-        let x = (B2 * C1 - B1 * C2) / determinant
-        let y = (A1 * C2 - A2 * C1) / determinant
-
-        if x >= min(p1.x, p2.x) && x <= max(p1.x, p2.x) && y >= min(p1.y, p2.y) && y <= max(p1.y, p2.y)
-            && x >= min(q1.x, q2.x) && x <= max(q1.x, q2.x) && y >= min(q1.y, q2.y) && y <= max(q1.y, q2.y)
-        {
-            // correct
-            intersectionPoint = CGPoint(x: x, y: y)
-            return true
-        }
-    }
-
-    // parallel
-    intersectionPoint = CGPoint(x: 0, y: 0)
-    return false
-}

@@ -11,8 +11,10 @@ let gravity = CGVector(dx: 0, dy: -3.711)
 
 class GeneticSimulator {
     private var evaluator : GeneticEvaluator
+    var surface : MarsSurface
     
     init(surface: MarsSurface) {
+        self.surface = surface
         evaluator = GeneticEvaluator(surface: surface)
     }
     
@@ -22,20 +24,26 @@ class GeneticSimulator {
         var currentPosition = initialPosition
         
         for controlInput in lander.controlInputs {
-            let nextPosition = simulateStep(currentPosition: currentPosition, controlInput: controlInput)
+            var nextPosition = simulateStep(currentPosition: currentPosition, controlInput: controlInput)
             
+            var intersectionPoint : CGPoint = CGPoint()
+            lander.state = getLanderState(prev: currentPosition, next: nextPosition, intersectionPoint: &intersectionPoint)
+
+            if lander.state == LanderState.Crashed || lander.state == LanderState.Landed {
+                nextPosition.position = intersectionPoint
+            }
+
             lander.trajectory.append(nextPosition)
-            
-            lander.state = evaluator.getLanderState(prev: currentPosition, next: nextPosition)
             
             if lander.state != LanderState.InFlight {
                 break
             }
             
+            
             currentPosition = nextPosition
         }
         
-        lander.trajectoryScore = evaluator.evaluateLastPositions(lander: lander)
+        lander.trajectoryScore = 1 / evaluator.evaluateLastPositions(lander: lander)
     }
     
     func simulateStep(currentPosition: LanderPosition, controlInput: LanderControlInput) -> LanderPosition {
@@ -59,6 +67,29 @@ class GeneticSimulator {
             rotate: endRotation,
             power: endPower
         )
+    }
+    
+    func getLanderState(prev: LanderPosition, next: LanderPosition, intersectionPoint: inout CGPoint) -> LanderState {
+        if next.fuel < 0 {
+            return LanderState.OutOfFuel
+        }
+        
+        for segment in surface.surfaceSegments {
+            
+            if segment.intersect(p1: prev.position, p2: next.position, intersectionPoint: &intersectionPoint) {
+                if segment.isFlat && prev.rotate == 0 && prev.velocity.dy <= 40 && prev.velocity.dx <= 20 {
+                    return LanderState.Landed
+                }
+                
+                return LanderState.Crashed
+            }
+        }
+        
+        if next.position.x > surface.surfacePoints.last!.x || next.position.x < surface.surfacePoints.first!.x {
+            return LanderState.Lost
+        }
+        
+        return LanderState.InFlight
     }
 }
 

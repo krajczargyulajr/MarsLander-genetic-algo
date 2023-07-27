@@ -21,6 +21,7 @@ class PopulationService {
     
     func generateInitialPopulation() -> LanderGeneration {
         let generation = LanderGeneration()
+        generation.number = 0
         
         for _ in 0..<populationSize {
             generation.landers.append(generateLander())
@@ -34,7 +35,7 @@ class PopulationService {
         
         var prev = LanderControlInput(rotate: 0.0, power: 0)
         
-        for _ in 0...steps {
+        for _ in 0..<steps {
             let powerDelta = Int.random(in: -1...1)
             let rotateDelta = Double.random(in: -15...15)
             let current = LanderControlInput(
@@ -52,19 +53,22 @@ class PopulationService {
     }
     
     func crossover(generation: LanderGeneration) -> LanderGeneration {
-        let prevGeneration = generation.landers.sorted { $0.trajectoryScore < $1.trajectoryScore }
+        let prevGeneration = generation.landers.sorted { $0.trajectoryScore > $1.trajectoryScore }
         let nextGeneration = LanderGeneration()
+        nextGeneration.number = generation.number + 1
         
-        calculateRouletteWheelNormals(landers: prevGeneration)
+        let prevGenerationNormalized = calculateRouletteWheelNormals(landers: prevGeneration).sorted { $0.trajectoryScore > $1.trajectoryScore }
         
         while nextGeneration.landers.count < populationSize {
             let r1 = Double.random(in: 0...1)
             let r2 = Double.random(in: 0...1)
             
-            let parent1 = prevGeneration.last { $0.trajectoryScore > r1 }!
-            let parent2 = prevGeneration.last { $0.trajectoryScore > r2 }!
+            let parent1 = prevGenerationNormalized.last { $0.trajectoryScore > r1 }!
+            let parent2 = prevGenerationNormalized.last { $0.trajectoryScore > r2 }!
             
-            nextGeneration.landers.append(contentsOf: crossover(parent1: parent1, parent2: parent2))
+            if parent1.id != parent2.id {
+                nextGeneration.landers.append(contentsOf: crossover(parent1: parent1, parent2: parent2))
+            }
         }
         
         return nextGeneration
@@ -97,21 +101,27 @@ class PopulationService {
     }
 }
 
-func calculateRouletteWheelNormals(landers: [Lander]) {
-    let sum = landers.sum(\.trajectoryScore)
+func calculateRouletteWheelNormals(landers: [Lander]) -> [Lander] {
+    let minx = landers.min { a, b in a.trajectoryScore < b.trajectoryScore }!.trajectoryScore
+    let maxx = landers.max { a, b in a.trajectoryScore < b.trajectoryScore }!.trajectoryScore
     
-    var bestToWorst = landers.sorted { $0.trajectoryScore < $1.trajectoryScore }
+    let bestToWorst = landers.sorted { $0.trajectoryScore > $1.trajectoryScore }
+    
+    var normalized = [Lander]()
     
     for l in 0..<bestToWorst.count {
         var lander = bestToWorst[l]
-        let normal = lander.trajectoryScore / sum
+        let normal = (lander.trajectoryScore - minx) / (maxx - minx)
         
-        for i in 0..<l {
-            bestToWorst[i].trajectoryScore += normal
+        if normal.isNaN {
+            print("NaN")
         }
         
         lander.trajectoryScore = normal
+        normalized.append(lander)
     }
+    
+    return normalized
 }
 
 extension Sequence  {

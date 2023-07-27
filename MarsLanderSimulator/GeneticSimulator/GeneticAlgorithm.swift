@@ -7,14 +7,14 @@
 
 import Foundation
 
-func solveWithGeneticAlgorithm(surface: MarsSurface, initialPosition: LanderPosition) -> [LanderGeneration] {
+func solveWithGeneticAlgorithm(surface: MarsSurface, initialPosition: LanderPosition, stepCount : Int, generationsCount: Int) -> [LanderGeneration] {
     var landerGenerations = [LanderGeneration]()
     
-    let populationService = PopulationService(populationSize: 40, steps: 40, geneMutationProbability: 0.1)
+    let populationService = PopulationService(populationSize: 40, steps: stepCount, geneMutationProbability: 0.1)
     
     var generation = populationService.generateInitialPopulation()
     
-    for _ in 0...20 {
+    for _ in 0..<generationsCount {
         generation.simulateAll(surface: surface, initialPosition: initialPosition)
         
         landerGenerations.append(generation)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SimulationDetailContent: View {
-    var surface : MarsSurface
+    var simulation : Simulation
     
     @State var simulationResults : [LanderGeneration] = []
     
@@ -20,6 +20,9 @@ struct SimulationDetailContent: View {
     @State var populationSize : Int = 40
     @State var stepCount : Int = 40
     @State var generationsCount : Int = 40
+    
+    @State var crossoverType : CrossoverType = CrossoverType.SinglePoint
+    @State var selectionType : SelectionType = SelectionType.RouletteWheelNormal
     
     var body: some View {
         VStack {
@@ -40,6 +43,18 @@ struct SimulationDetailContent: View {
                     TextField("generation-count", text: Binding(get: {String(generationsCount)}, set: {Value in generationsCount = Int(Value) ?? 20}))
                         .multilineTextAlignment(.trailing)
                         .frame(maxWidth: 50)
+                    Picker("Crossover type", selection: $crossoverType) {
+                        ForEach(CrossoverType.allCases) { ct in
+                            Text(ct.rawValue.capitalized)
+                                .tag(ct)
+                        }
+                    }
+                    Picker("Selection type", selection: $selectionType) {
+                        ForEach(SelectionType.allCases) { st in
+                            Text(st.rawValue.capitalized)
+                                .tag(st)
+                        }
+                    }
                 }
                 Spacer()
             }.padding()
@@ -75,7 +90,7 @@ struct SimulationDetailContent: View {
             Canvas { context, size in
                 var surfacePath = Path()
                 
-                let translatedCoordinates = surface.surfacePoints.map { toCanvasCoords(canvasSize: size, point: $0) }
+                let translatedCoordinates = simulation.surface.surfacePoints.map { toCanvasCoords(canvasSize: size, point: $0) }
                 
                 surfacePath.addLines(translatedCoordinates)
                 
@@ -103,7 +118,14 @@ struct SimulationDetailContent: View {
                         }
                         
                         // let opacity = Double(i) / Double(lander.count)
-                        context.stroke(landerPath, with: .color(color), style: StrokeStyle(lineWidth: 1))
+                        context.stroke(landerPath, with: .color(color.opacity(lander.normalizedTrajectoryScore)), style: StrokeStyle(lineWidth: 1))
+                        
+                        var trajectoryPoints = Path()
+                        for coords in lander.trajectoryInCanvasCoordinates(canvasSize: size) {
+                            trajectoryPoints.addEllipse(in: CGRect(x: coords.x - 1, y: coords.y - 1, width: 2, height: 2))
+                        }
+
+                        context.fill(trajectoryPoints, with: .color(color.opacity(lander.normalizedTrajectoryScore)) )
                     }
                 }
             }
@@ -143,10 +165,13 @@ struct SimulationDetailContent: View {
     func runSim() {
         
         simulationResults = solveWithGeneticAlgorithm(
-            surface: surface,
-            initialPosition: LanderPosition(position: CGPoint(x: 2500, y: 2700), velocity: CGVector(dx: 0, dy: 0), fuel: 550, rotate: 0, power: 0),
+            surface: simulation.surface,
+            initialPosition: simulation.initialPosition,
             stepCount: stepCount,
-            generationsCount: generationsCount
+            generationsCount: generationsCount,
+            populationSize: populationSize,
+            crossover: crossoverType,
+            selection: selectionType
         )
         
         return
@@ -155,6 +180,6 @@ struct SimulationDetailContent: View {
 
 struct SimulationDetailContent_Previews: PreviewProvider {
     static var previews: some View {
-        SimulationDetailContent(surface: surfaces[0])
+        SimulationDetailContent(simulation: surfaces[0])
     }
 }

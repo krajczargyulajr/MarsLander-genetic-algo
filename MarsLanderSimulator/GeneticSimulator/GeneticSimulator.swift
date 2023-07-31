@@ -11,20 +11,31 @@ let gravity = CGVector(dx: 0, dy: -3.711)
 
 class GeneticSimulator {
     private var evaluator : GeneticEvaluator
-    var surface : MarsSurface
     
-    init(surface: MarsSurface) {
+    var surface : MarsSurface
+    var initialPosition : LanderPosition
+    
+    init(surface: MarsSurface, initialPosition: LanderPosition) {
         self.surface = surface
+        self.initialPosition = initialPosition
+        
         evaluator = GeneticEvaluator(surface: surface)
     }
     
-    func simulateLanderMovement(lander: inout Lander, initialPosition: LanderPosition) {
+    func simulateAll(landers: [Lander]) {
+        for lander in landers {
+            simulateTrajectory(lander: lander, initialPosition: initialPosition)
+        }
+    }
+    
+    func simulateTrajectory(lander: Lander, initialPosition: LanderPosition) {
+        lander.trajectory = []
         lander.trajectory.append(initialPosition)
         
         var currentPosition = initialPosition
         
         for controlInput in lander.controlInputs {
-            var nextPosition = simulateStep(currentPosition: currentPosition, controlInput: controlInput)
+            let nextPosition = simulateStep(currentPosition: currentPosition, controlInput: controlInput)
             
             var intersectionPoint : CGPoint = CGPoint()
             lander.state = getLanderState(prev: currentPosition, next: nextPosition, intersectionPoint: &intersectionPoint)
@@ -39,11 +50,8 @@ class GeneticSimulator {
                 break
             }
             
-            
             currentPosition = nextPosition
         }
-        
-        lander.trajectoryScore = 1 / evaluator.evaluateLastPositions(lander: lander)
     }
     
     func simulateStep(currentPosition: LanderPosition, controlInput: LanderControlInput) -> LanderPosition {

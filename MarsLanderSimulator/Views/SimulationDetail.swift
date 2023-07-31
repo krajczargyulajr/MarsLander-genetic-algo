@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct SimulationDetail: View {
-    var dataModel : [MarsSurface]
-    var selectedSurfaceId : Int = -1
+    var dataModel : [Simulation]
+    var selectedSimulationId : Int = -1
     
     var body: some View {
         ZStack {
-            if selectedSurfaceId <= 0 {
+            if selectedSimulationId <= 0 {
                 Text("Please select one of the surfaces!")
             } else {
-                SimulationDetailContent(surface: dataModel.first(where: { $0.id == selectedSurfaceId})!)
+                SimulationDetailContent(simulation: dataModel.first(where: { $0.id == selectedSimulationId})!)
             }
         }
     }
@@ -24,6 +24,6 @@ struct SimulationDetail: View {
 
 struct SimulationDetail_Previews: PreviewProvider {
     static var previews: some View {
-        SimulationDetail(dataModel: surfaces, selectedSurfaceId: 0)
+        SimulationDetail(dataModel: surfaces, selectedSimulationId: 0)
     }
 }

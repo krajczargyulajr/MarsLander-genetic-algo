@@ -8,13 +8,20 @@
 import Foundation
 
 
-struct Simulation : Codable {
+class Simulation : Codable, Identifiable {
+    public var id : Int
+    
     public var surface : MarsSurface
     public var initialPosition : LanderPosition
-    public var output : SimulationOutput
+    
+    public var outputs : [SimulationOutput] = []
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, surface, initialPosition
+    }
 }
 
-struct SimulationOutput : Codable {
+class SimulationOutput : Codable {
     public var surface : MarsSurface
     
     public var generations : [LanderGeneration]

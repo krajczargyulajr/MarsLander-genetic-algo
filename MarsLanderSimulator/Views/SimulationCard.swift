@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct SimulationCard: View {
-    var surface : MarsSurface
+    var simulation : Simulation
     
     var body: some View {
         HStack {
-            Text("#\(surface.id)")
+            Text("#\(simulation.id)")
             Canvas { context, size in
                 var surfacePath = Path()
                 
-                let translatedCoordinates = surface.surfacePoints.map { toCanvasCoords(canvasSize: size, point: $0) }
+                let translatedCoordinates = simulation.surface.surfacePoints.map { toCanvasCoords(canvasSize: size, point: $0) }
                 
                 surfacePath.addLines(translatedCoordinates)
                 
@@ -28,6 +28,6 @@ struct SimulationCard: View {
 
 struct SimulationCard_Previews: PreviewProvider {
     static var previews: some View {
-        SimulationCard(surface: surfaces[0])
+        SimulationCard(simulation: surfaces[0])
     }
 }

@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct SimulationList: View {
-    var dataModel : [MarsSurface]
+    var dataModel : [Simulation]
     
-    @State var selectedSurfaceId : Int = 2
+    @State var selectedSimulationId : Int = 2
     
     var body: some View {
         NavigationSplitView {
-            List(selection: $selectedSurfaceId) {
-                ForEach(dataModel) { surface in
-                    NavigationLink(value: surface.id) {
-                        SimulationCard(surface: surface)
+            List(selection: $selectedSimulationId) {
+                ForEach(dataModel) { sim in
+                    NavigationLink(value: sim.id) {
+                        SimulationCard(simulation: sim)
                     }
                 }
             }
         } detail: {
             SimulationDetail(
                 dataModel: dataModel,
-                selectedSurfaceId: selectedSurfaceId
+                selectedSimulationId: selectedSimulationId
             )
         }
     }
@@ -32,6 +32,6 @@ struct SimulationList: View {
 
 struct SimulationList_Previews: PreviewProvider {
     static var previews: some View {
-        SimulationList(dataModel: surfaces, selectedSurfaceId: 0)
+        SimulationList(dataModel: surfaces, selectedSimulationId: 0)
     }
 }

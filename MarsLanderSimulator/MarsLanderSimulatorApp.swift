@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+
 @main
 struct MarsLanderSimulatorApp: App {
-    var dataModel : [MarsSurface] = surfaces
+    var dataModel : [Simulation] = surfaces
     
     var body: some Scene {
         Window("MarsLander Simulator", id: "main") {
-            SimulationList(dataModel: dataModel, selectedSurfaceId: 0)
+            SimulationList(dataModel: dataModel, selectedSimulationId: 0)
         }
     }
 }

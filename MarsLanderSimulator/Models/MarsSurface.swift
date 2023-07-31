@@ -7,30 +7,45 @@
 
 import Foundation
 
-struct MarsSurface : Codable, Identifiable {
+class MarsSurface : Codable, Identifiable {
     var id: Int
     
     var surfacePoints : [CGPoint]
     
     var surfaceSegments : [MarsSurfaceSegment]
     
+    var flatSegment : MarsSurfaceSegment = MarsSurfaceSegment(startPoint: CGPoint(), endPoint:CGPoint())
+    
     init(id: Int, surfacePoints: [CGPoint]) {
         self.id = id
         self.surfacePoints = surfacePoints
         
-        var segments = [MarsSurfaceSegment]()
-        for i in surfacePoints.indices.dropLast(1) {
-            segments.append(MarsSurfaceSegment(startPoint: surfacePoints[i], endPoint: surfacePoints[i+1]))
-        }
-        surfaceSegments = segments
+        surfaceSegments = MarsSurface.setupSegments(surfacePoints: surfacePoints, flatSegment: &self.flatSegment)
     }
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let _id = try container.decode(Int.self, forKey: .id)
         let _surfacePoints = try container.decode([CGPoint].self, forKey: .surfacePoints)
         
-        self.init(id: _id, surfacePoints: _surfacePoints)
+        self.id = _id
+        self.surfacePoints = _surfacePoints
+        
+        self.surfaceSegments = MarsSurface.setupSegments(surfacePoints: surfacePoints, flatSegment: &self.flatSegment)
+    }
+    
+    static func setupSegments(surfacePoints: [CGPoint], flatSegment: inout MarsSurfaceSegment) -> [MarsSurfaceSegment] {
+        var segments = [MarsSurfaceSegment]()
+        for i in surfacePoints.indices.dropLast(1) {
+            let segment = MarsSurfaceSegment(startPoint: surfacePoints[i], endPoint: surfacePoints[i+1])
+            segments.append(segment)
+            
+            if segment.isFlat {
+                flatSegment = segment
+            }
+        }
+        
+        return segments
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -38,9 +53,14 @@ struct MarsSurface : Codable, Identifiable {
     }
 }
 
-struct MarsSurfaceSegment : Codable {
+class MarsSurfaceSegment : Codable {
     var startPoint : CGPoint
     var endPoint : CGPoint
+    
+    init(startPoint: CGPoint, endPoint: CGPoint) {
+        self.startPoint = startPoint
+        self.endPoint = endPoint
+    }
     
     var isFlat : Bool {
         return startPoint.y == endPoint.y

@@ -11,9 +11,11 @@ class LanderGeneration : Codable {
     public var number : Int = 0
     
     public var landers : [Lander] = [Lander]()
+    
+    public var valid : Bool = true
 }
 
-struct Lander : Codable {
+class Lander : Codable {
     
     var id : String = UUID().uuidString
     
@@ -21,7 +23,10 @@ struct Lander : Codable {
     
     public var trajectory : [LanderPosition] = [LanderPosition]()
     
-    public var trajectoryScore : Double = 0.0
+    public var distanceFromTarget : Double = 0.0
+    public var trajectoryScore : Double = 1.0
+    
+    public var normalizedTrajectoryScore : Double = 0.0
     
     public var state : LanderState = LanderState.InFlight
     
@@ -33,7 +38,7 @@ struct Lander : Codable {
     }
 }
 
-struct LanderPosition : Codable {
+class LanderPosition : Codable {
     public var position : CGPoint
     
     public var velocity : CGVector
@@ -42,14 +47,27 @@ struct LanderPosition : Codable {
     
     public var rotate : Double
     public var power : Int
+    
+    init(position: CGPoint, velocity: CGVector, fuel: Int, rotate: Double, power: Int) {
+        self.position = position
+        self.velocity = velocity
+        self.fuel = fuel
+        self.rotate = rotate
+        self.power = power
+    }
 }
 
 enum LanderState : Codable {
     case InFlight, Landed, Crashed, OutOfFuel, Lost
 }
 
-struct LanderControlInput : Codable {
+class LanderControlInput : Codable {
     public var rotate : Double
     
     public var power : Int
+    
+    init(rotate: Double, power: Int) {
+        self.rotate = rotate
+        self.power = power
+    }
 }

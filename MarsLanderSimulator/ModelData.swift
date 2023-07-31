@@ -7,7 +7,7 @@
 
 import Foundation
 
-var surfaces : [MarsSurface] = load("surfaces.json")
+var surfaces : [Simulation] = load("surfaces.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data

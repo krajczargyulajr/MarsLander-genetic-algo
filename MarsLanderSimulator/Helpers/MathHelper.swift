@@ -7,6 +7,8 @@
 
 import Foundation
 
+let epsilon : Double = 0.000001
+
 func degreeToRadian(degree: Double) -> Double {
     return degree * Double.pi / 180.0
 }
@@ -38,4 +40,8 @@ func +(lhs: CGVector, rhs: CGVector) -> CGVector {
 
 func +(lhs: CGPoint, rhs: CGVector) -> CGPoint {
     return CGPoint(x: lhs.x + rhs.dx, y: lhs.y + rhs.dy)
+}
+
+func isInInterval(x0: Double, x1: Double, x2: Double) -> Bool {
+    return (x1 - epsilon <= x0 && x0 <= x2 + epsilon) || (x2 - epsilon <= x0 && x0 <= x1 + epsilon)
 }

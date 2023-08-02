@@ -83,8 +83,8 @@ class MarsSurfaceSegment : Codable {
             let x = (B2 * C1 - B1 * C2) / determinant
             let y = (A1 * C2 - A2 * C1) / determinant
 
-            if x >= min(p1.x, p2.x) && x <= max(p1.x, p2.x) && y >= min(p1.y, p2.y) && y <= max(p1.y, p2.y)
-                && x >= min(q1.x, q2.x) && x <= max(q1.x, q2.x) && y >= min(q1.y, q2.y) && y <= max(q1.y, q2.y)
+            if isInInterval(x0: x, x1: p1.x, x2: p2.x) && isInInterval(x0: y, x1: p1.y, x2: p2.y)
+                && isInInterval(x0: x, x1: q1.x, x2: q2.x) && isInInterval(x0: y, x1: q1.y, x2: q2.y)
             {
                 // correct
                 intersectionPoint = CGPoint(x: x, y: y)

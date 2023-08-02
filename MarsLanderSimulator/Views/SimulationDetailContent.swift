@@ -17,12 +17,12 @@ struct SimulationDetailContent: View {
     
     @State var playing : Bool = false
     
-    @State var populationSize : Int = 40
-    @State var stepCount : Int = 40
-    @State var generationsCount : Int = 40
+    @State var populationSize : Int = 60
+    @State var stepCount : Int = 60
+    @State var generationsCount : Int = 60
     
-    @State var crossoverType : CrossoverType = CrossoverType.SinglePoint
-    @State var selectionType : SelectionType = SelectionType.RouletteWheelNormal
+    @State var crossoverType : CrossoverType = CrossoverType.Uniform
+    @State var selectionType : SelectionType = SelectionType.TopPercentRandom
     
     var body: some View {
         VStack {
@@ -32,15 +32,15 @@ struct SimulationDetailContent: View {
                 }
                 Group {
                     Text("Population:")
-                    TextField("population-size", text: Binding(get: { String(populationSize) }, set: {Value in populationSize = Int(Value) ?? 40}))
+                    TextField("population-size", text: Binding(get: { String(populationSize) }, set: {Value in populationSize = Int(Value) ?? 60}))
                         .multilineTextAlignment(.trailing)
                         .frame(maxWidth: 50)
                     Text("Steps:")
-                    TextField("step-count", text: Binding(get: { String(stepCount) }, set: {Value in stepCount = Int(Value) ?? 40}))
+                    TextField("step-count", text: Binding(get: { String(stepCount) }, set: {Value in stepCount = Int(Value) ?? 60}))
                         .multilineTextAlignment(.trailing)
                         .frame(maxWidth: 50)
                     Text("Generations:")
-                    TextField("generation-count", text: Binding(get: {String(generationsCount)}, set: {Value in generationsCount = Int(Value) ?? 20}))
+                    TextField("generation-count", text: Binding(get: {String(generationsCount)}, set: {Value in generationsCount = Int(Value) ?? 60}))
                         .multilineTextAlignment(.trailing)
                         .frame(maxWidth: 50)
                     Picker("Crossover type", selection: $crossoverType) {

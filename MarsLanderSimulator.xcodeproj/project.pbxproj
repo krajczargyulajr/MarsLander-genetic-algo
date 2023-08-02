@@ -17,6 +17,7 @@
 		B41136632A77717C00F81AE5 /* MultiPointCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136622A77717C00F81AE5 /* MultiPointCrossover.swift */; };
 		B41136652A77737400F81AE5 /* BlendCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136642A77737400F81AE5 /* BlendCrossover.swift */; };
 		B41136672A77755700F81AE5 /* LinearCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136662A77755700F81AE5 /* LinearCrossover.swift */; };
+		B411367D2A7ABFF400F81AE5 /* UniformCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411367C2A7ABFF400F81AE5 /* UniformCrossover.swift */; };
 		B416034A2A7013090003E608 /* surfaces.json in Resources */ = {isa = PBXBuildFile; fileRef = B41603492A7013090003E608 /* surfaces.json */; };
 		B416034C2A70CEA20003E608 /* SimulationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034B2A70CEA20003E608 /* SimulationList.swift */; };
 		B416034E2A70CF550003E608 /* SimulationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034D2A70CF550003E608 /* SimulationDetail.swift */; };
@@ -50,6 +51,7 @@
 		B41136622A77717C00F81AE5 /* MultiPointCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPointCrossover.swift; sourceTree = "<group>"; };
 		B41136642A77737400F81AE5 /* BlendCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendCrossover.swift; sourceTree = "<group>"; };
 		B41136662A77755700F81AE5 /* LinearCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearCrossover.swift; sourceTree = "<group>"; };
+		B411367C2A7ABFF400F81AE5 /* UniformCrossover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformCrossover.swift; sourceTree = "<group>"; };
 		B41603492A7013090003E608 /* surfaces.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = surfaces.json; sourceTree = "<group>"; };
 		B416034B2A70CEA20003E608 /* SimulationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationList.swift; sourceTree = "<group>"; };
 		B416034D2A70CF550003E608 /* SimulationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetail.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		B411365F2A7770EC00F81AE5 /* Crossover */ = {
 			isa = PBXGroup;
 			children = (
+				B411367C2A7ABFF400F81AE5 /* UniformCrossover.swift */,
 				B41136602A77710100F81AE5 /* SinglePointCrossover.swift */,
 				B41136622A77717C00F81AE5 /* MultiPointCrossover.swift */,
 				B41136642A77737400F81AE5 /* BlendCrossover.swift */,
@@ -285,6 +288,7 @@
 				B41136612A77710100F81AE5 /* SinglePointCrossover.swift in Sources */,
 				B41136652A77737400F81AE5 /* BlendCrossover.swift in Sources */,
 				B41136672A77755700F81AE5 /* LinearCrossover.swift in Sources */,
+				B411367D2A7ABFF400F81AE5 /* UniformCrossover.swift in Sources */,
 				B41603672A7237430003E608 /* Lander.swift in Sources */,
 				B455DDDA2A4614CC001118A8 /* ContentView.swift in Sources */,
 				B41603602A7116E00003E608 /* MathHelper.swift in Sources */,

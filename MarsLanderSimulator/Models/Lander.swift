@@ -70,4 +70,8 @@ class LanderControlInput : Codable {
         self.rotate = rotate
         self.power = power
     }
+    
+    func copy() -> LanderControlInput {
+        return LanderControlInput(rotate: self.rotate, power: self.power)
+    }
 }

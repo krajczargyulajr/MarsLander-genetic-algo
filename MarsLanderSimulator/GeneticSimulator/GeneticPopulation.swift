@@ -70,7 +70,7 @@ class GeneticPopulation {
         case .TopPercentRandom:
             fallthrough
         default:
-            selection = TopPercentSelection(populationSize: populationSize, topPercentToSelect: 10)
+            selection = TopPercentSelection(populationSize: populationSize, topPercentToSelect: 30)
         }
         
         let selectedParents = selection.select(generation: generation)
@@ -81,6 +81,8 @@ class GeneticPopulation {
             crossover = SinglePointCrossover()
         case .Linear:
             crossover = LinearCrossover()
+        case .Uniform:
+            crossover = UniformCrossover()
         case .Blend:
             fallthrough
         default:

@@ -8,13 +8,13 @@
 import Foundation
 
 enum CrossoverType : String, CaseIterable, Identifiable {
-    case Uniform, SinglePoint, Linear, Blend, SimulatedBinary 
+    case Uniform, SinglePoint, Linear, Arithmetic 
     
     var id: String { self.rawValue }
 }
 
 enum SelectionType : String, CaseIterable, Identifiable {
-    case TopPercentRandom, RouletteWheelNormal
+    case TopPercentRandom, RouletteWheelNormal, Tournament
     
     var id: String { self.rawValue }
 }

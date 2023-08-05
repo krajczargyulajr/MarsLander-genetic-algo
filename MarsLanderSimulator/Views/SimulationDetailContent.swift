@@ -17,12 +17,12 @@ struct SimulationDetailContent: View {
     
     @State var playing : Bool = false
     
-    @State var populationSize : Int = 60
-    @State var stepCount : Int = 60
+    @State var populationSize : Int = 100
+    @State var stepCount : Int = 160
     @State var generationsCount : Int = 60
     
-    @State var crossoverType : CrossoverType = CrossoverType.Uniform
-    @State var selectionType : SelectionType = SelectionType.TopPercentRandom
+    @State var crossoverType : CrossoverType = CrossoverType.Arithmetic
+    @State var selectionType : SelectionType = SelectionType.Tournament
     
     var body: some View {
         VStack {
@@ -43,16 +43,16 @@ struct SimulationDetailContent: View {
                     TextField("generation-count", text: Binding(get: {String(generationsCount)}, set: {Value in generationsCount = Int(Value) ?? 60}))
                         .multilineTextAlignment(.trailing)
                         .frame(maxWidth: 50)
-                    Picker("Crossover type", selection: $crossoverType) {
-                        ForEach(CrossoverType.allCases) { ct in
-                            Text(ct.rawValue.capitalized)
-                                .tag(ct)
-                        }
-                    }
                     Picker("Selection type", selection: $selectionType) {
                         ForEach(SelectionType.allCases) { st in
                             Text(st.rawValue.capitalized)
                                 .tag(st)
+                        }
+                    }
+                    Picker("Crossover type", selection: $crossoverType) {
+                        ForEach(CrossoverType.allCases) { ct in
+                            Text(ct.rawValue.capitalized)
+                                .tag(ct)
                         }
                     }
                 }
@@ -108,24 +108,26 @@ struct SimulationDetailContent: View {
                         // crashed: red
                         // landed: green
                         let color : Color
+                        var opacity : Double = lander.normalizedTrajectoryScore
                         switch lander.state {
                         case LanderState.Crashed:
                             color = .red
                         case LanderState.Landed:
                             color = .green
+                            opacity = 1.0
                         default:
                             color = .white
                         }
                         
                         // let opacity = Double(i) / Double(lander.count)
-                        context.stroke(landerPath, with: .color(color.opacity(lander.normalizedTrajectoryScore)), style: StrokeStyle(lineWidth: 1))
+                        context.stroke(landerPath, with: .color(color.opacity(opacity)), style: StrokeStyle(lineWidth: 1))
                         
                         var trajectoryPoints = Path()
                         for coords in lander.trajectoryInCanvasCoordinates(canvasSize: size) {
                             trajectoryPoints.addEllipse(in: CGRect(x: coords.x - 1, y: coords.y - 1, width: 2, height: 2))
                         }
 
-                        context.fill(trajectoryPoints, with: .color(color.opacity(lander.normalizedTrajectoryScore)) )
+                        context.fill(trajectoryPoints, with: .color(color.opacity(opacity)) )
                     }
                 }
             }
@@ -163,7 +165,7 @@ struct SimulationDetailContent: View {
     }
     
     func runSim() {
-        
+        currentGeneration = 0
         simulationResults = solveWithGeneticAlgorithm(
             surface: simulation.surface,
             initialPosition: simulation.initialPosition,

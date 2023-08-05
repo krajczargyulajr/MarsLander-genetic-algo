@@ -96,4 +96,8 @@ class MarsSurfaceSegment : Codable {
         intersectionPoint = CGPoint(x: 0, y: 0)
         return false
     }
+    
+    func midpoint() -> CGPoint {
+        return CGPoint(x: (startPoint.x + endPoint.x) / 2.0, y: (startPoint.y + endPoint.y) / 2.0)
+    }
 }

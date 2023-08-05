@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Crossover {
-    func crossover(parent1: Lander, parent2: Lander) -> [Lander]
+    func crossover(parent1: Lander, parent2: Lander) -> Lander
 }

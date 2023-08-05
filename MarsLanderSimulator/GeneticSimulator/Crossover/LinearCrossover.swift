@@ -8,8 +8,8 @@
 import Foundation
 
 class LinearCrossover : Crossover {
-    func crossover(parent1: Lander, parent2: Lander) -> [Lander] {
-        let offspring = [Lander]()
+    func crossover(parent1: Lander, parent2: Lander) -> Lander {
+        let offspring = Lander()
         
         let alpha = [0.5, 1.5, -0.5]
         let beta = [0.5, -0.5, 1.5]
@@ -29,7 +29,6 @@ class LinearCrossover : Crossover {
         let o1kp = alpha[0] * Double(crossoverGeneValue1Power) + beta[0] * Double(crossoverGeneValue2Power)
         let o2kp = alpha[1] * Double(crossoverGeneValue1Power) + beta[1] * Double(crossoverGeneValue2Power)
         let o3kp = alpha[2] * Double(crossoverGeneValue1Power) + beta[2] * Double(crossoverGeneValue2Power)
-        
         
         return offspring
     }

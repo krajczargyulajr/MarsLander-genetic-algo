@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Selection {
-    func select(generation: LanderGeneration) -> [(Lander, Lander)]
+    func select(landers: [Lander]) -> Lander
 }

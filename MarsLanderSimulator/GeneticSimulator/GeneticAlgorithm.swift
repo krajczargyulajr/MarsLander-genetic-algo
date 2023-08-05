@@ -19,12 +19,12 @@ func solveWithGeneticAlgorithm(
     var landerGenerations = [LanderGeneration]()
     
     let simulator = GeneticSimulator(surface: surface, initialPosition: initialPosition)
-    let populationService = GeneticPopulation(populationSize: populationSize, steps: stepCount, geneMutationProbability: 0.3, crossover: crossover, selection: selection)
+    let populationService = GeneticPopulation(populationSize: populationSize, steps: stepCount, geneMutationProbability: 0.03, crossover: crossover, selection: selection)
     let evaluator = GeneticEvaluator(surface: surface)
     
     var generation = LanderGeneration()
     generation.number = 0
-    generation.landers = populationService.generateInitialPopulation()
+    generation.landers = populationService.generateInitialPopulation(initialPosition: initialPosition)
     
     for _ in 0..<generationsCount {
         
@@ -42,7 +42,7 @@ func solveWithGeneticAlgorithm(
         // try next generation 10 times
         var canContinue = false
         for _ in 0...9 {
-            let nextGeneration = populationService.crossover(generation: generation)
+            let nextGeneration = populationService.generateNextGeneration(generation: generation)
             
             if nextGeneration.valid {
                 canContinue = true

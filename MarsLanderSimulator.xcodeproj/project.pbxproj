@@ -15,9 +15,12 @@
 		B411365E2A7770DE00F81AE5 /* CrossoverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411365D2A7770DE00F81AE5 /* CrossoverProtocol.swift */; };
 		B41136612A77710100F81AE5 /* SinglePointCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136602A77710100F81AE5 /* SinglePointCrossover.swift */; };
 		B41136632A77717C00F81AE5 /* MultiPointCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136622A77717C00F81AE5 /* MultiPointCrossover.swift */; };
-		B41136652A77737400F81AE5 /* BlendCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136642A77737400F81AE5 /* BlendCrossover.swift */; };
+		B41136652A77737400F81AE5 /* ArithmeticCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136642A77737400F81AE5 /* ArithmeticCrossover.swift */; };
 		B41136672A77755700F81AE5 /* LinearCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136662A77755700F81AE5 /* LinearCrossover.swift */; };
 		B411367D2A7ABFF400F81AE5 /* UniformCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411367C2A7ABFF400F81AE5 /* UniformCrossover.swift */; };
+		B411367F2A7BCC1400F81AE5 /* TournamentSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411367E2A7BCC1400F81AE5 /* TournamentSelection.swift */; };
+		B41136812A7BCE4B00F81AE5 /* GeneticCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136802A7BCE4B00F81AE5 /* GeneticCrossover.swift */; };
+		B41136832A7BCF2100F81AE5 /* GeneticSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136822A7BCF2100F81AE5 /* GeneticSelection.swift */; };
 		B416034A2A7013090003E608 /* surfaces.json in Resources */ = {isa = PBXBuildFile; fileRef = B41603492A7013090003E608 /* surfaces.json */; };
 		B416034C2A70CEA20003E608 /* SimulationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034B2A70CEA20003E608 /* SimulationList.swift */; };
 		B416034E2A70CF550003E608 /* SimulationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034D2A70CF550003E608 /* SimulationDetail.swift */; };
@@ -49,9 +52,12 @@
 		B411365D2A7770DE00F81AE5 /* CrossoverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossoverProtocol.swift; sourceTree = "<group>"; };
 		B41136602A77710100F81AE5 /* SinglePointCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePointCrossover.swift; sourceTree = "<group>"; };
 		B41136622A77717C00F81AE5 /* MultiPointCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPointCrossover.swift; sourceTree = "<group>"; };
-		B41136642A77737400F81AE5 /* BlendCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendCrossover.swift; sourceTree = "<group>"; };
+		B41136642A77737400F81AE5 /* ArithmeticCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticCrossover.swift; sourceTree = "<group>"; };
 		B41136662A77755700F81AE5 /* LinearCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearCrossover.swift; sourceTree = "<group>"; };
 		B411367C2A7ABFF400F81AE5 /* UniformCrossover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformCrossover.swift; sourceTree = "<group>"; };
+		B411367E2A7BCC1400F81AE5 /* TournamentSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSelection.swift; sourceTree = "<group>"; };
+		B41136802A7BCE4B00F81AE5 /* GeneticCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticCrossover.swift; sourceTree = "<group>"; };
+		B41136822A7BCF2100F81AE5 /* GeneticSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticSelection.swift; sourceTree = "<group>"; };
 		B41603492A7013090003E608 /* surfaces.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = surfaces.json; sourceTree = "<group>"; };
 		B416034B2A70CEA20003E608 /* SimulationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationList.swift; sourceTree = "<group>"; };
 		B416034D2A70CF550003E608 /* SimulationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetail.swift; sourceTree = "<group>"; };
@@ -92,6 +98,7 @@
 			children = (
 				B41136572A7660C100F81AE5 /* RouletteWheelSelection.swift */,
 				B41136592A7664B100F81AE5 /* TopPercentSelection.swift */,
+				B411367E2A7BCC1400F81AE5 /* TournamentSelection.swift */,
 			);
 			path = Selection;
 			sourceTree = "<group>";
@@ -102,7 +109,7 @@
 				B411367C2A7ABFF400F81AE5 /* UniformCrossover.swift */,
 				B41136602A77710100F81AE5 /* SinglePointCrossover.swift */,
 				B41136622A77717C00F81AE5 /* MultiPointCrossover.swift */,
-				B41136642A77737400F81AE5 /* BlendCrossover.swift */,
+				B41136642A77737400F81AE5 /* ArithmeticCrossover.swift */,
 				B41136662A77755700F81AE5 /* LinearCrossover.swift */,
 			);
 			path = Crossover;
@@ -129,6 +136,8 @@
 				B41136522A73BDBF00F81AE5 /* SimulatorEnums.swift */,
 				B411365B2A77702800F81AE5 /* SelectionProtocol.swift */,
 				B411365D2A7770DE00F81AE5 /* CrossoverProtocol.swift */,
+				B41136802A7BCE4B00F81AE5 /* GeneticCrossover.swift */,
+				B41136822A7BCF2100F81AE5 /* GeneticSelection.swift */,
 			);
 			path = GeneticSimulator;
 			sourceTree = "<group>";
@@ -278,6 +287,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B41136832A7BCF2100F81AE5 /* GeneticSelection.swift in Sources */,
+				B41136812A7BCE4B00F81AE5 /* GeneticCrossover.swift in Sources */,
 				B41136552A752BEA00F81AE5 /* MarsLanderGenerationGrid.swift in Sources */,
 				B41603532A70D0D80003E608 /* CanvasHelper.swift in Sources */,
 				B416035A2A710CD20003E608 /* GeneticEvaluator.swift in Sources */,
@@ -286,13 +297,14 @@
 				B41136532A73BDBF00F81AE5 /* SimulatorEnums.swift in Sources */,
 				B411365C2A77702800F81AE5 /* SelectionProtocol.swift in Sources */,
 				B41136612A77710100F81AE5 /* SinglePointCrossover.swift in Sources */,
-				B41136652A77737400F81AE5 /* BlendCrossover.swift in Sources */,
+				B41136652A77737400F81AE5 /* ArithmeticCrossover.swift in Sources */,
 				B41136672A77755700F81AE5 /* LinearCrossover.swift in Sources */,
 				B411367D2A7ABFF400F81AE5 /* UniformCrossover.swift in Sources */,
 				B41603672A7237430003E608 /* Lander.swift in Sources */,
 				B455DDDA2A4614CC001118A8 /* ContentView.swift in Sources */,
 				B41603602A7116E00003E608 /* MathHelper.swift in Sources */,
 				B411365E2A7770DE00F81AE5 /* CrossoverProtocol.swift in Sources */,
+				B411367F2A7BCC1400F81AE5 /* TournamentSelection.swift in Sources */,
 				B416034C2A70CEA20003E608 /* SimulationList.swift in Sources */,
 				B411365A2A7664B100F81AE5 /* TopPercentSelection.swift in Sources */,
 				B41603632A7237040003E608 /* Simulation.swift in Sources */,

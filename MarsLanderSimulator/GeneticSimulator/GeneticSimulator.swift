@@ -57,8 +57,8 @@ class GeneticSimulator {
     func simulateStep(currentPosition: LanderPosition, controlInput: LanderControlInput) -> LanderPosition {
         let velocity = currentPosition.velocity
         
-        let endRotation = calculateValidRotation(current: currentPosition.rotate, requested: controlInput.rotate)
-        let endPower = calculateValidPower(current: currentPosition.power, requested: controlInput.power)
+        let endRotation = calculateValidRotation(current: currentPosition.rotate, requested: currentPosition.rotate + controlInput.rotate)
+        let endPower = calculateValidPower(current: currentPosition.power, requested: currentPosition.power + controlInput.power)
         
         let endThrust = (CGVector(dx: 0, dy: 1) * Double(endPower)).rotateD(angleInDegrees: endRotation)
         
@@ -85,7 +85,7 @@ class GeneticSimulator {
         for segment in surface.surfaceSegments {
             
             if segment.intersect(p1: prev.position, p2: next.position, intersectionPoint: &intersectionPoint) {
-                if segment.isFlat && prev.rotate == 0 && prev.velocity.dy <= 40 && prev.velocity.dx <= 20 {
+                if segment.isFlat && abs(prev.rotate) <= 15 && abs(prev.velocity.dy) <= 40 && abs(prev.velocity.dx) <= 20 {
                     return LanderState.Landed
                 }
                 

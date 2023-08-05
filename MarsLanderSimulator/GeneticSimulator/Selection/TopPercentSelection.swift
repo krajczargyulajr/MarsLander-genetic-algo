@@ -8,37 +8,16 @@
 import Foundation
 
 class TopPercentSelection : Selection {
-    var populationSize : Int
-    var topPercentToSelect : Int
     
-    init(populationSize: Int, topPercentToSelect: Int) {
-        self.populationSize = populationSize
-        self.topPercentToSelect = topPercentToSelect
-    }
+    var topPercentToSelect : Int = 50
     
-    func select(generation: LanderGeneration) -> [(Lander, Lander)] {
-        
-        var parentSelection = [(Lander, Lander)]()
-        
-        let landersBestToWorst = generation.landers.sorted { $0.normalizedTrajectoryScore > $1.normalizedTrajectoryScore }
-        
+    func select(landers: [Lander]) -> Lander {
         // use only the top 50%
-        let selectionPoolCount = landersBestToWorst.count * topPercentToSelect / 100
-        let selectionPool = Array(landersBestToWorst.dropLast(selectionPoolCount))
+        let selectionPool = landers.count * topPercentToSelect / 100
 
-        // each set of parents is expected to produce two offsprings
-        while parentSelection.count < populationSize / 2 {
-            let r1 = Int.random(in: selectionPool.indices)
-            let r2 = Int.random(in: selectionPool.indices)
+        let r1 = Int.random(in: 0...selectionPool)
 
-            if r1 != r2 {
-                let parent1 = selectionPool[r1]
-                let parent2 = selectionPool[r2]
-
-                parentSelection.append((parent1, parent2))
-            }
-        }
-        
-        return parentSelection
+        let parent = landers[r1]
+        return parent
     }
 }

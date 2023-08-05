@@ -11,96 +11,85 @@ class GeneticPopulation {
     var populationSize : Int
     var steps : Int
     
+    var crossoverProbability : Double = 0.8
     var geneMutationProbability : Double
     
-    var crossover : CrossoverType
-    var selection : SelectionType
+    var crossover : Crossover
+    var selection : Selection
     
     var topTenPercentCount : Int
     
     init(populationSize: Int, steps: Int, geneMutationProbability: Double, crossover: CrossoverType, selection: SelectionType) {
         self.populationSize = populationSize
         self.steps = steps
+        
         self.geneMutationProbability = geneMutationProbability
-        self.crossover = crossover
-        self.selection = selection
+        
+        self.crossover = GeneticCrossover.get(crossoverType: crossover)
+        self.selection = GeneticSelection.get(selectionType: selection)
         
         self.topTenPercentCount = populationSize / 10
     }
     
-    func generateInitialPopulation() -> [Lander] {
+    func generateInitialPopulation(initialPosition: LanderPosition) -> [Lander] {
         var landers = [Lander]()
         
         for _ in 0..<populationSize {
-            landers.append(generateLander())
+            landers.append(generateLander(initialPosition: initialPosition))
         }
         
         return landers
     }
     
-    func generateLander() -> Lander {
+    func generateLander(initialPosition: LanderPosition) -> Lander {
         let lander = Lander()
-        
-        var prev = LanderControlInput(rotate: 0.0, power: 0)
         
         for _ in 0..<steps {
             let powerDelta = Int.random(in: -1...1)
-            let rotateDelta = Double.random(in: -30...30)
+            let rotateDelta = Double.random(in: -15...15)
             let current = LanderControlInput(
-                rotate: calculateValidRotation(current: prev.rotate, requested: prev.rotate + rotateDelta),
-                power: calculateValidPower(current: prev.power, requested: prev.power + powerDelta)
+                rotate: rotateDelta,
+                power: powerDelta
             )
             
             lander.controlInputs.append(current)
-            
-            prev = current
         }
         
         return lander
     }
     
-    func crossover(generation: LanderGeneration) -> LanderGeneration {
+    func generateNextGeneration(generation: LanderGeneration) -> LanderGeneration {
+        var landers = [Lander]()
+        
+        let prevLandersBestToWorst = generation.landers.sorted { $0.normalizedTrajectoryScore > $1.normalizedTrajectoryScore }
+
+        while landers.count < populationSize {
+        
+            let parent1 = selection.select(landers: prevLandersBestToWorst)
+            let parent2 = selection.select(landers: prevLandersBestToWorst)
+            
+            
+            let child = crossover.crossover(parent1: parent1, parent2: parent2)
+            let originalChild = Lander()
+            originalChild.controlInputs = child.controlInputs.map { $0.copy() }
+            
+            mutate(lander: child)
+            
+            landers.append(child)
+        }
+        
         let nextGeneration = LanderGeneration()
         nextGeneration.number = generation.number + 1
-        
-        var selection : Selection
-        switch self.selection {
-        case .RouletteWheelNormal:
-            selection = RouletteWheelSelection(populationSize: populationSize)
-        case .TopPercentRandom:
-            fallthrough
-        default:
-            selection = TopPercentSelection(populationSize: populationSize, topPercentToSelect: 30)
-        }
-        
-        let selectedParents = selection.select(generation: generation)
-        
-        var crossover : Crossover
-        switch self.crossover {
-        case .SinglePoint:
-            crossover = SinglePointCrossover()
-        case .Linear:
-            crossover = LinearCrossover()
-        case .Uniform:
-            crossover = UniformCrossover()
-        case .Blend:
-            fallthrough
-        default:
-            crossover = BlendCrossover()
-        }
-        
-        for parent in selectedParents {
-            nextGeneration.landers.append(contentsOf: crossover.crossover(parent1: parent.0, parent2: parent.1))
-        }
+        nextGeneration.landers = landers
         
         return nextGeneration
     }
     
     func mutate(lander: Lander) {
         for controlInput in lander.controlInputs {
-            if Double.random(in: 0...1) > geneMutationProbability {
-                controlInput.power = calculateValidPower(current: controlInput.power, requested: controlInput.power + Int.random(in: -1...1))
-                controlInput.rotate = calculateValidRotation(current: controlInput.rotate, requested: controlInput.rotate + Double.random(in: -30...30))
+            if Double.random(in: 0...1) < geneMutationProbability {
+                controlInput.power = Int.random(in: 0...4)
+                controlInput.rotate = Double.random(in: -90...90)
             }
         }
     }

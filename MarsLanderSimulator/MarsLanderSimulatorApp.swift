@@ -15,6 +15,6 @@ struct MarsLanderSimulatorApp: App {
     var body: some Scene {
         Window("MarsLander Simulator", id: "main") {
             SimulationList(dataModel: dataModel, selectedSimulationId: 0)
-        }
+        }.windowStyle(.hiddenTitleBar)
     }
 }

@@ -11,13 +11,15 @@ import Foundation
 class Simulation : Codable, Identifiable {
     public var id : Int
     
+    public var title : String
+    
     public var surface : MarsSurface
     public var initialPosition : LanderPosition
     
     public var outputs : [SimulationOutput] = []
     
     private enum CodingKeys: String, CodingKey {
-        case id, surface, initialPosition
+        case id, surface, initialPosition, title
     }
 }
 

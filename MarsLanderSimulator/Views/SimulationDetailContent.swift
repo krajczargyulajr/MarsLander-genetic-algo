@@ -25,7 +25,8 @@ struct SimulationDetailContent: View {
     @State var selectionType : SelectionType = SelectionType.Tournament
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            Text("\(simulation.title)").multilineTextAlignment(.leading).font(Font.system(size: 21, weight: .bold)).padding()
             HStack {
                 Button(action:runSim) {
                     Text("Run Sim")

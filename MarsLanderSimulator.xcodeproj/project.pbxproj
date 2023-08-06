@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B41136532A73BDBF00F81AE5 /* SimulatorEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136522A73BDBF00F81AE5 /* SimulatorEnums.swift */; };
+		B41136552A752BEA00F81AE5 /* MarsLanderGenerationGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136542A752BEA00F81AE5 /* MarsLanderGenerationGrid.swift */; };
+		B41136582A7660C100F81AE5 /* RouletteWheelSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136572A7660C100F81AE5 /* RouletteWheelSelection.swift */; };
+		B411365A2A7664B100F81AE5 /* TopPercentSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136592A7664B100F81AE5 /* TopPercentSelection.swift */; };
+		B411365C2A77702800F81AE5 /* SelectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411365B2A77702800F81AE5 /* SelectionProtocol.swift */; };
+		B411365E2A7770DE00F81AE5 /* CrossoverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411365D2A7770DE00F81AE5 /* CrossoverProtocol.swift */; };
+		B41136612A77710100F81AE5 /* SinglePointCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136602A77710100F81AE5 /* SinglePointCrossover.swift */; };
+		B41136632A77717C00F81AE5 /* MultiPointCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136622A77717C00F81AE5 /* MultiPointCrossover.swift */; };
+		B41136652A77737400F81AE5 /* ArithmeticCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136642A77737400F81AE5 /* ArithmeticCrossover.swift */; };
+		B41136672A77755700F81AE5 /* LinearCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136662A77755700F81AE5 /* LinearCrossover.swift */; };
+		B411367D2A7ABFF400F81AE5 /* UniformCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411367C2A7ABFF400F81AE5 /* UniformCrossover.swift */; };
+		B411367F2A7BCC1400F81AE5 /* TournamentSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411367E2A7BCC1400F81AE5 /* TournamentSelection.swift */; };
+		B41136812A7BCE4B00F81AE5 /* GeneticCrossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136802A7BCE4B00F81AE5 /* GeneticCrossover.swift */; };
+		B41136832A7BCF2100F81AE5 /* GeneticSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41136822A7BCF2100F81AE5 /* GeneticSelection.swift */; };
+		B416034A2A7013090003E608 /* surfaces.json in Resources */ = {isa = PBXBuildFile; fileRef = B41603492A7013090003E608 /* surfaces.json */; };
+		B416034C2A70CEA20003E608 /* SimulationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034B2A70CEA20003E608 /* SimulationList.swift */; };
+		B416034E2A70CF550003E608 /* SimulationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034D2A70CF550003E608 /* SimulationDetail.swift */; };
+		B41603502A70CFD40003E608 /* SimulationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416034F2A70CFD40003E608 /* SimulationCard.swift */; };
+		B41603532A70D0D80003E608 /* CanvasHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603522A70D0D80003E608 /* CanvasHelper.swift */; };
+		B41603552A70E1AD0003E608 /* SimulationDetailContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603542A70E1AD0003E608 /* SimulationDetailContent.swift */; };
+		B41603582A710C290003E608 /* GeneticSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603572A710C290003E608 /* GeneticSimulator.swift */; };
+		B416035A2A710CD20003E608 /* GeneticEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603592A710CD20003E608 /* GeneticEvaluator.swift */; };
+		B416035C2A710CF40003E608 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416035B2A710CF40003E608 /* GeneticAlgorithm.swift */; };
+		B416035E2A710D200003E608 /* GeneticPopulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416035D2A710D200003E608 /* GeneticPopulation.swift */; };
+		B41603602A7116E00003E608 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416035F2A7116E00003E608 /* MathHelper.swift */; };
+		B41603632A7237040003E608 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603622A7237040003E608 /* Simulation.swift */; };
+		B41603652A7237240003E608 /* MarsSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603642A7237240003E608 /* MarsSurface.swift */; };
+		B41603672A7237430003E608 /* Lander.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41603662A7237430003E608 /* Lander.swift */; };
+		B43DFF162A5554CF00525229 /* input1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B43DFF152A5554CF00525229 /* input1.txt */; };
+		B455DDD82A4614CC001118A8 /* MarsLanderSimulatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B455DDD72A4614CC001118A8 /* MarsLanderSimulatorApp.swift */; };
+		B455DDDA2A4614CC001118A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B455DDD92A4614CC001118A8 /* ContentView.swift */; };
+		B455DDDC2A4614CF001118A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B455DDDB2A4614CF001118A8 /* Assets.xcassets */; };
+		B455DDDF2A4614CF001118A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B455DDDE2A4614CF001118A8 /* Preview Assets.xcassets */; };
+		B4BCE1292A6FF5E000CAF397 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BCE1282A6FF5E000CAF397 /* ModelData.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B41136522A73BDBF00F81AE5 /* SimulatorEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorEnums.swift; sourceTree = "<group>"; };
+		B41136542A752BEA00F81AE5 /* MarsLanderGenerationGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsLanderGenerationGrid.swift; sourceTree = "<group>"; };
+		B41136572A7660C100F81AE5 /* RouletteWheelSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteWheelSelection.swift; sourceTree = "<group>"; };
+		B41136592A7664B100F81AE5 /* TopPercentSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPercentSelection.swift; sourceTree = "<group>"; };
+		B411365B2A77702800F81AE5 /* SelectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionProtocol.swift; sourceTree = "<group>"; };
+		B411365D2A7770DE00F81AE5 /* CrossoverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossoverProtocol.swift; sourceTree = "<group>"; };
+		B41136602A77710100F81AE5 /* SinglePointCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePointCrossover.swift; sourceTree = "<group>"; };
+		B41136622A77717C00F81AE5 /* MultiPointCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPointCrossover.swift; sourceTree = "<group>"; };
+		B41136642A77737400F81AE5 /* ArithmeticCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArithmeticCrossover.swift; sourceTree = "<group>"; };
+		B41136662A77755700F81AE5 /* LinearCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearCrossover.swift; sourceTree = "<group>"; };
+		B411367C2A7ABFF400F81AE5 /* UniformCrossover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformCrossover.swift; sourceTree = "<group>"; };
+		B411367E2A7BCC1400F81AE5 /* TournamentSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSelection.swift; sourceTree = "<group>"; };
+		B41136802A7BCE4B00F81AE5 /* GeneticCrossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticCrossover.swift; sourceTree = "<group>"; };
+		B41136822A7BCF2100F81AE5 /* GeneticSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticSelection.swift; sourceTree = "<group>"; };
+		B41603492A7013090003E608 /* surfaces.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = surfaces.json; sourceTree = "<group>"; };
+		B416034B2A70CEA20003E608 /* SimulationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationList.swift; sourceTree = "<group>"; };
+		B416034D2A70CF550003E608 /* SimulationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetail.swift; sourceTree = "<group>"; };
+		B416034F2A70CFD40003E608 /* SimulationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationCard.swift; sourceTree = "<group>"; };
+		B41603522A70D0D80003E608 /* CanvasHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasHelper.swift; sourceTree = "<group>"; };
+		B41603542A70E1AD0003E608 /* SimulationDetailContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationDetailContent.swift; sourceTree = "<group>"; };
+		B41603572A710C290003E608 /* GeneticSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticSimulator.swift; sourceTree = "<group>"; };
+		B41603592A710CD20003E608 /* GeneticEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticEvaluator.swift; sourceTree = "<group>"; };
+		B416035B2A710CF40003E608 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
+		B416035D2A710D200003E608 /* GeneticPopulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticPopulation.swift; sourceTree = "<group>"; };
+		B416035F2A7116E00003E608 /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
+		B41603622A7237040003E608 /* Simulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulation.swift; sourceTree = "<group>"; };
+		B41603642A7237240003E608 /* MarsSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsSurface.swift; sourceTree = "<group>"; };
+		B41603662A7237430003E608 /* Lander.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lander.swift; sourceTree = "<group>"; };
+		B43DFF152A5554CF00525229 /* input1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input1.txt; sourceTree = "<group>"; };
+		B455DDD42A4614CC001118A8 /* MarsLanderSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsLanderSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B455DDD72A4614CC001118A8 /* MarsLanderSimulatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsLanderSimulatorApp.swift; sourceTree = "<group>"; };
+		B455DDD92A4614CC001118A8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B455DDDB2A4614CF001118A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B455DDDE2A4614CF001118A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B455DDE02A4614CF001118A8 /* MarsLanderSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarsLanderSimulator.entitlements; sourceTree = "<group>"; };
+		B4BCE1282A6FF5E000CAF397 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B455DDD12A4614CC001118A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B41136562A76608600F81AE5 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				B41136572A7660C100F81AE5 /* RouletteWheelSelection.swift */,
+				B41136592A7664B100F81AE5 /* TopPercentSelection.swift */,
+				B411367E2A7BCC1400F81AE5 /* TournamentSelection.swift */,
+			);
+			path = Selection;
+			sourceTree = "<group>";
+		};
+		B411365F2A7770EC00F81AE5 /* Crossover */ = {
+			isa = PBXGroup;
+			children = (
+				B411367C2A7ABFF400F81AE5 /* UniformCrossover.swift */,
+				B41136602A77710100F81AE5 /* SinglePointCrossover.swift */,
+				B41136622A77717C00F81AE5 /* MultiPointCrossover.swift */,
+				B41136642A77737400F81AE5 /* ArithmeticCrossover.swift */,
+				B41136662A77755700F81AE5 /* LinearCrossover.swift */,
+			);
+			path = Crossover;
+			sourceTree = "<group>";
+		};
+		B41603512A70D0CA0003E608 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B41603522A70D0D80003E608 /* CanvasHelper.swift */,
+				B416035F2A7116E00003E608 /* MathHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B41603562A710C100003E608 /* GeneticSimulator */ = {
+			isa = PBXGroup;
+			children = (
+				B411365F2A7770EC00F81AE5 /* Crossover */,
+				B41136562A76608600F81AE5 /* Selection */,
+				B41603572A710C290003E608 /* GeneticSimulator.swift */,
+				B41603592A710CD20003E608 /* GeneticEvaluator.swift */,
+				B416035B2A710CF40003E608 /* GeneticAlgorithm.swift */,
+				B416035D2A710D200003E608 /* GeneticPopulation.swift */,
+				B41136522A73BDBF00F81AE5 /* SimulatorEnums.swift */,
+				B411365B2A77702800F81AE5 /* SelectionProtocol.swift */,
+				B411365D2A7770DE00F81AE5 /* CrossoverProtocol.swift */,
+				B41136802A7BCE4B00F81AE5 /* GeneticCrossover.swift */,
+				B41136822A7BCF2100F81AE5 /* GeneticSelection.swift */,
+			);
+			path = GeneticSimulator;
+			sourceTree = "<group>";
+		};
+		B41603612A7236F50003E608 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B41603622A7237040003E608 /* Simulation.swift */,
+				B41603642A7237240003E608 /* MarsSurface.swift */,
+				B41603662A7237430003E608 /* Lander.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B455DDCB2A4614CC001118A8 = {
+			isa = PBXGroup;
+			children = (
+				B455DDD62A4614CC001118A8 /* MarsLanderSimulator */,
+				B455DDD52A4614CC001118A8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B455DDD52A4614CC001118A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B455DDD42A4614CC001118A8 /* MarsLanderSimulator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B455DDD62A4614CC001118A8 /* MarsLanderSimulator */ = {
+			isa = PBXGroup;
+			children = (
+				B455DDD72A4614CC001118A8 /* MarsLanderSimulatorApp.swift */,
+				B41603612A7236F50003E608 /* Models */,
+				B41603562A710C100003E608 /* GeneticSimulator */,
+				B41603512A70D0CA0003E608 /* Helpers */,
+				B4BCE12A2A7012B700CAF397 /* Resources */,
+				B4BCE1252A6FF50000CAF397 /* Views */,
+				B455DDD92A4614CC001118A8 /* ContentView.swift */,
+				B43DFF152A5554CF00525229 /* input1.txt */,
+				B455DDDB2A4614CF001118A8 /* Assets.xcassets */,
+				B455DDE02A4614CF001118A8 /* MarsLanderSimulator.entitlements */,
+				B455DDDD2A4614CF001118A8 /* Preview Content */,
+				B4BCE1282A6FF5E000CAF397 /* ModelData.swift */,
+			);
+			path = MarsLanderSimulator;
+			sourceTree = "<group>";
+		};
+		B455DDDD2A4614CF001118A8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B455DDDE2A4614CF001118A8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B4BCE1252A6FF50000CAF397 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B416034B2A70CEA20003E608 /* SimulationList.swift */,
+				B416034D2A70CF550003E608 /* SimulationDetail.swift */,
+				B416034F2A70CFD40003E608 /* SimulationCard.swift */,
+				B41603542A70E1AD0003E608 /* SimulationDetailContent.swift */,
+				B41136542A752BEA00F81AE5 /* MarsLanderGenerationGrid.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B4BCE12A2A7012B700CAF397 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B41603492A7013090003E608 /* surfaces.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B455DDD32A4614CC001118A8 /* MarsLanderSimulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B455DDE32A4614CF001118A8 /* Build configuration list for PBXNativeTarget "MarsLanderSimulator" */;
+			buildPhases = (
+				B455DDD02A4614CC001118A8 /* Sources */,
+				B455DDD12A4614CC001118A8 /* Frameworks */,
+				B455DDD22A4614CC001118A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarsLanderSimulator;
+			productName = MarsLanderSimulator;
+			productReference = B455DDD42A4614CC001118A8 /* MarsLanderSimulator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B455DDCC2A4614CC001118A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					B455DDD32A4614CC001118A8 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = B455DDCF2A4614CC001118A8 /* Build configuration list for PBXProject "MarsLanderSimulator" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B455DDCB2A4614CC001118A8;
+			productRefGroup = B455DDD52A4614CC001118A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B455DDD32A4614CC001118A8 /* MarsLanderSimulator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B455DDD22A4614CC001118A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B43DFF162A5554CF00525229 /* input1.txt in Resources */,
+				B455DDDF2A4614CF001118A8 /* Preview Assets.xcassets in Resources */,
+				B416034A2A7013090003E608 /* surfaces.json in Resources */,
+				B455DDDC2A4614CF001118A8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B455DDD02A4614CC001118A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B41136832A7BCF2100F81AE5 /* GeneticSelection.swift in Sources */,
+				B41136812A7BCE4B00F81AE5 /* GeneticCrossover.swift in Sources */,
+				B41136552A752BEA00F81AE5 /* MarsLanderGenerationGrid.swift in Sources */,
+				B41603532A70D0D80003E608 /* CanvasHelper.swift in Sources */,
+				B416035A2A710CD20003E608 /* GeneticEvaluator.swift in Sources */,
+				B416035C2A710CF40003E608 /* GeneticAlgorithm.swift in Sources */,
+				B41136582A7660C100F81AE5 /* RouletteWheelSelection.swift in Sources */,
+				B41136532A73BDBF00F81AE5 /* SimulatorEnums.swift in Sources */,
+				B411365C2A77702800F81AE5 /* SelectionProtocol.swift in Sources */,
+				B41136612A77710100F81AE5 /* SinglePointCrossover.swift in Sources */,
+				B41136652A77737400F81AE5 /* ArithmeticCrossover.swift in Sources */,
+				B41136672A77755700F81AE5 /* LinearCrossover.swift in Sources */,
+				B411367D2A7ABFF400F81AE5 /* UniformCrossover.swift in Sources */,
+				B41603672A7237430003E608 /* Lander.swift in Sources */,
+				B455DDDA2A4614CC001118A8 /* ContentView.swift in Sources */,
+				B41603602A7116E00003E608 /* MathHelper.swift in Sources */,
+				B411365E2A7770DE00F81AE5 /* CrossoverProtocol.swift in Sources */,
+				B411367F2A7BCC1400F81AE5 /* TournamentSelection.swift in Sources */,
+				B416034C2A70CEA20003E608 /* SimulationList.swift in Sources */,
+				B411365A2A7664B100F81AE5 /* TopPercentSelection.swift in Sources */,
+				B41603632A7237040003E608 /* Simulation.swift in Sources */,
+				B41603652A7237240003E608 /* MarsSurface.swift in Sources */,
+				B4BCE1292A6FF5E000CAF397 /* ModelData.swift in Sources */,
+				B416035E2A710D200003E608 /* GeneticPopulation.swift in Sources */,
+				B41603502A70CFD40003E608 /* SimulationCard.swift in Sources */,
+				B41603582A710C290003E608 /* GeneticSimulator.swift in Sources */,
+				B455DDD82A4614CC001118A8 /* MarsLanderSimulatorApp.swift in Sources */,
+				B41603552A70E1AD0003E608 /* SimulationDetailContent.swift in Sources */,
+				B416034E2A70CF550003E608 /* SimulationDetail.swift in Sources */,
+				B41136632A77717C00F81AE5 /* MultiPointCrossover.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B455DDE12A4614CF001118A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B455DDE22A4614CF001118A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		B455DDE42A4614CF001118A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MarsLanderSimulator/MarsLanderSimulator.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MarsLanderSimulator/Preview Content\"";
+				DEVELOPMENT_TEAM = R8CT7T9ADM;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ph03nixx.MarsLanderSimulator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B455DDE52A4614CF001118A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MarsLanderSimulator/MarsLanderSimulator.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MarsLanderSimulator/Preview Content\"";
+				DEVELOPMENT_TEAM = R8CT7T9ADM;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ph03nixx.MarsLanderSimulator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B455DDCF2A4614CC001118A8 /* Build configuration list for PBXProject "MarsLanderSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B455DDE12A4614CF001118A8 /* Debug */,
+				B455DDE22A4614CF001118A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B455DDE32A4614CF001118A8 /* Build configuration list for PBXNativeTarget "MarsLanderSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B455DDE42A4614CF001118A8 /* Debug */,
+				B455DDE52A4614CF001118A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B455DDCC2A4614CC001118A8 /* Project object */;
+}

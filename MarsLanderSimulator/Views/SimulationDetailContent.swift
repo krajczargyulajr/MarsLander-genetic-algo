@@ -97,6 +97,12 @@ struct SimulationDetailContent: View {
                 
                 context.stroke(surfacePath, with: .color(.red), style: StrokeStyle(lineWidth: 1))
                 
+                let initialPositionCoordinates = toCanvasCoords(canvasSize: size, point: simulation.initialPosition.position)
+                
+                var initialPositionPath = Path()
+                initialPositionPath.addEllipse(in: CGRect(x: initialPositionCoordinates.x - 3, y: initialPositionCoordinates.y - 3, width: 6, height: 6))
+                context.fill(initialPositionPath, with: .color(.cyan))
+                
                 if simulationResults.count > 0 {
                     let g = simulationResults[currentGeneration]
                     

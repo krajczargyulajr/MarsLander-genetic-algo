@@ -12,14 +12,14 @@ class GeneticPopulation {
     var steps : Int
     
     var crossoverProbability : Double = 0.8
-    var geneMutationProbability : Double
+    var geneMutationProbability : Int
     
     var crossover : Crossover
     var selection : Selection
     
     var topTenPercentCount : Int
     
-    init(populationSize: Int, steps: Int, geneMutationProbability: Double, crossover: CrossoverType, selection: SelectionType) {
+    init(populationSize: Int, steps: Int, geneMutationProbability: Int, crossover: CrossoverType, selection: SelectionType) {
         self.populationSize = populationSize
         self.steps = steps
         
@@ -45,8 +45,8 @@ class GeneticPopulation {
         let lander = Lander()
         
         for _ in 0..<steps {
-            let powerDelta = Int.random(in: -1...1)
-            let rotateDelta = Double.random(in: -15...15)
+            let powerDelta = Int(arc4random_uniform(3)) - 1 // (in: -1...1)
+            let rotateDelta = Double(Int(arc4random_uniform(31)) - 15)
             let current = LanderControlInput(
                 rotate: rotateDelta,
                 power: powerDelta
@@ -87,9 +87,9 @@ class GeneticPopulation {
     
     func mutate(lander: Lander) {
         for controlInput in lander.controlInputs {
-            if Double.random(in: 0...1) < geneMutationProbability {
-                controlInput.power = Int.random(in: 0...4)
-                controlInput.rotate = Double.random(in: -90...90)
+            if arc4random_uniform(101) < geneMutationProbability {
+                controlInput.power = Int(arc4random_uniform(5))
+                controlInput.rotate = Double(Int(arc4random_uniform(181)) - 90)
             }
         }
     }

@@ -10,10 +10,10 @@ import Foundation
 class TournamentSelection : Selection {
     
     func select(landers: [Lander]) -> Lander {
-        var bestIndex = Int.random(in: landers.indices)
+        var bestIndex = Int(arc4random_uniform(UInt32(landers.count)))
         
         for _ in 0...10 {
-            let candidateIndex = Int.random(in: landers.indices)
+            let candidateIndex = Int(arc4random_uniform(UInt32(landers.count)))
             if landers[candidateIndex].normalizedTrajectoryScore > landers[bestIndex].normalizedTrajectoryScore {
                 bestIndex = candidateIndex
             }

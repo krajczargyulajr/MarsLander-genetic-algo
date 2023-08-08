@@ -23,38 +23,28 @@ func solveWithGeneticAlgorithm(
     let evaluator = GeneticEvaluator(surface: surface)
     
     var generation = LanderGeneration()
-    generation.number = 0
-    generation.landers = populationService.generateInitialPopulation(initialPosition: initialPosition)
     
-    for _ in 0..<generationsCount {
+    for i in 0..<generationsCount {
         
-        simulator.simulateAll(landers: generation.landers)
+        let prevGeneration = generation
+        
+        generation = LanderGeneration()
+        generation.number = i
+        
+        if i == 0 {
+            generation.landers = populationService.generateInitialPopulation(initialPosition: initialPosition)
+        } else {
+            generation.landers = populationService.generateNextPopulation(prevLanders: prevGeneration.landers)
+        }
         
         landerGenerations.append(generation)
         
-        if generation.landers.contains(where: { $0.state == LanderState.Landed}) {
+        if simulator.simulateAll(landers: generation.landers) {
             generation.landers = generation.landers.filter { $0.state == LanderState.Landed }
             break
         }
         
         evaluator.evaluateAll(landers: generation.landers)
-        
-        // try next generation 10 times
-        var canContinue = false
-        for _ in 0...9 {
-            let nextGeneration = populationService.generateNextGeneration(generation: generation)
-            
-            if nextGeneration.valid {
-                canContinue = true
-                generation = nextGeneration
-                break
-            }
-        }
-        
-        if !canContinue {
-            print("Could not generate valid next generation")
-            break
-        }
     }
     
     return landerGenerations

@@ -22,13 +22,17 @@ class GeneticSimulator {
         evaluator = GeneticEvaluator(surface: surface)
     }
     
-    func simulateAll(landers: [Lander]) {
+    func simulateAll(landers: [Lander]) -> Bool {
         for lander in landers {
-            simulateTrajectory(lander: lander, initialPosition: initialPosition)
+            if simulateTrajectory(lander: lander, initialPosition: initialPosition) == LanderState.Landed {
+                return true
+            }
         }
+        
+        return false
     }
     
-    func simulateTrajectory(lander: Lander, initialPosition: LanderPosition) {
+    func simulateTrajectory(lander: Lander, initialPosition: LanderPosition) -> LanderState {
         lander.trajectory = []
         lander.trajectory.append(initialPosition)
         
@@ -52,6 +56,8 @@ class GeneticSimulator {
             
             currentPosition = nextPosition
         }
+        
+        return lander.state
     }
     
     func simulateStep(currentPosition: LanderPosition, controlInput: LanderControlInput) -> LanderPosition {

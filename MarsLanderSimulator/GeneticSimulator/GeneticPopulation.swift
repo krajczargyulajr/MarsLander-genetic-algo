@@ -58,10 +58,10 @@ class GeneticPopulation {
         return lander
     }
     
-    func generateNextGeneration(generation: LanderGeneration) -> LanderGeneration {
+    func generateNextPopulation(prevLanders: [Lander]) -> [Lander] {
         var landers = [Lander]()
         
-        let prevLandersBestToWorst = generation.landers.sorted { $0.normalizedTrajectoryScore > $1.normalizedTrajectoryScore }
+        let prevLandersBestToWorst = prevLanders.sorted { $0.normalizedTrajectoryScore > $1.normalizedTrajectoryScore }
 
         while landers.count < populationSize {
         
@@ -78,11 +78,7 @@ class GeneticPopulation {
             landers.append(child)
         }
         
-        let nextGeneration = LanderGeneration()
-        nextGeneration.number = generation.number + 1
-        nextGeneration.landers = landers
-        
-        return nextGeneration
+        return landers
     }
     
     func mutate(lander: Lander) {

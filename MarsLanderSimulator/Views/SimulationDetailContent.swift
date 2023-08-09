@@ -24,9 +24,10 @@ struct SimulationDetailContent: View {
     @State var crossoverType : CrossoverType = CrossoverType.Arithmetic
     @State var selectionType : SelectionType = SelectionType.Tournament
     
+    @State var mutationProbability : Int = 3
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("\(simulation.title)").multilineTextAlignment(.leading).font(Font.system(size: 21, weight: .bold)).padding()
             HStack {
                 Button(action:runSim) {
                     Text("Run Sim")
@@ -56,10 +57,13 @@ struct SimulationDetailContent: View {
                                 .tag(ct)
                         }
                     }
+                    Text("Mutation probability:")
+                    TextField("mutation-probability", text: Binding(get: { String(mutationProbability)}, set: {Value in mutationProbability = Int(Value) ?? 0 }))
                 }
                 Spacer()
             }.padding()
             Divider().frame(height: 1).padding(.horizontal).background(Color.gray)
+            Text("\(simulation.title)").multilineTextAlignment(.leading).font(Font.system(size: 21, weight: .bold)).padding()
             HStack {
                 Group {
                     Button(action: goToFirst) {
@@ -115,7 +119,7 @@ struct SimulationDetailContent: View {
                         // crashed: red
                         // landed: green
                         let color : Color
-                        var opacity : Double = lander.normalizedTrajectoryScore
+                        var opacity : Double = lander.normalizedTrajectoryScore.isNaN ? 0.5 : lander.normalizedTrajectoryScore
                         switch lander.state {
                         case LanderState.Crashed:
                             color = .red
@@ -172,6 +176,11 @@ struct SimulationDetailContent: View {
     }
     
     func runSim() {
+        for _ in 0...4 {
+            let random = arc4random_uniform(2)
+            print(random)
+        }
+        
         currentGeneration = 0
         simulationResults = solveWithGeneticAlgorithm(
             surface: simulation.surface,
@@ -180,7 +189,8 @@ struct SimulationDetailContent: View {
             generationsCount: generationsCount,
             populationSize: populationSize,
             crossover: crossoverType,
-            selection: selectionType
+            selection: selectionType,
+            mutationProbability: mutationProbability
         )
         
         return
